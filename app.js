@@ -1,7 +1,10 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
-
+var expressValidator = require('express-validator')
+var mongojs = require('mongojs')
+var db = mongojs('tagtical',['events']);
+var ObjectId = mongojs.ObjectId;
 
 var app = express();
 
@@ -25,44 +28,83 @@ app.use(bodyParser.urlencoded({extended: false}));
 // Set static Path
 app.use(express.static(path.join(__dirname, 'public')));
 
-var users = [
-    {
-        id : 1,
-        first_name: 'John',
-        last_name: 'Doe',
-        email: 'johndoe@mail.com'
-    },
-    {
-        id : 2,
-        first_name: 'Bob',
-        last_name: 'Smith',
-        email: 'bobsmith@mail.com'
-    },
-    {
-        id : 3,
-        first_name: 'Alice',
-        last_name: 'Jackson',
-        email: 'alij@mail.com'
-    }
-]
+//Global Vars
+app.use(function(req,res,next){
+    res.locals.errors = null;   
+    next();
+})
+
+
+//Express Validator Middleware
+app.use(expressValidator()); 
+
 
 
 app.get('/',function(req,res){
-    res.render('index',{
-        title: 'Customers', 
-        users : users
-    });
+    db.events.find(function(err,docs){
+        console.log(docs)
+        
+        res.render('index',{
+            title: 'Customers', 
+            users : docs
+        });
+    
+    })
+
+    
 });
 
 app.post('/users/add',function(req,res){
-    var newUser = {
-        first_name: req.body.first_name,
-        last_name: req.body.last_name,
-        email: req.body.email,        
+    
+    req.checkBody('first_name','First Name required').notEmpty();
+    req.checkBody('last_name','Last Name required').notEmpty();
+    req.checkBody('email','Email required').notEmpty();
+
+    var errors = req.validationErrors();
+
+    if(errors){
+
+        db.events.find(function(err,docs){
+            console.log(docs)
+            
+            res.render('index',{
+                title: 'Customers', 
+                users : docs,
+                errors: errors
+            });
+        
+        })
+        
+
+    } else{
+        var newUser = {
+            first_name: req.body.first_name,
+            last_name: req.body.last_name,
+            email: req.body.email,        
+        }
+        console.log(newUser)
+
+        db.events.insert(newUser,function(err,result){
+            if(err){
+                console.log(err);
+            }
+            res.redirect('/');
+        });
+
+        console.log('SUCCESS');
     }
 
-    console.log(newUser)
+    
 })
+
+app.delete('/users/delete/:id',function(req,res){
+    db.events.remove({_id: ObjectId(req.params.id)},function(err,result){
+        if(err){
+            console.log(err);
+        }
+        res.redirect('/');
+    });
+});
 
 app.listen(3000, function(){
     console.log('Server Started on Port 3000')
