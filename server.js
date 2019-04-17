@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 const items = require('./routes/api/items');
+const games = require('./routes/api/games')
 
 const app = express();
 app.use(express.json());
@@ -18,6 +19,7 @@ mongoose
 
 // Use Routes
 app.use('/api/items',items);
+app.use('/api/games',games);
 
 const port = process.env.port || 5000;
     
