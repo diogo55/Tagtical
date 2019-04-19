@@ -43,6 +43,10 @@ const GameSchema = new Schema ({
     date: {
         type: Date,
         default: Date.now()
+    },
+    live: {
+        type: Boolean,
+        default: false
     }
 });
 
