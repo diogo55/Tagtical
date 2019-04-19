@@ -30,11 +30,13 @@ const PlayerSchema = new Schema ({
     
 });
 
+//schema da equipa
 const TeamSchema = new Schema ({
     name: String,
     players: [PlayerSchema]
 });    
 
+//schema do jogo
 const GameSchema = new Schema ({
     teamA: TeamSchema,
     teamB: TeamSchema,
