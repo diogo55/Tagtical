@@ -14,6 +14,9 @@ router.get('/', (req,res) =>{
         .then(games => res.json(games))
 });
 
+// @route Get api/games/id
+// @desc Get specific game
+// @access Public
 router.get('/:id',(req,res) =>{
     Game.findById(req.params.id)
     .then(games => res.json(games))
