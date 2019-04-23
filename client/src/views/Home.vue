@@ -10,6 +10,12 @@ import Todos from '../components/Todos';
 import AddTodo from '../components/AddTodo';
 import axios from 'axios';
 
+ var config = {
+    headers: {'Access-Control-Allow-Origin': '*'}
+  };
+
+
+
 export default {
   name: 'Home',
   components: {
@@ -40,10 +46,11 @@ export default {
 
     }
   },
-  created(){
-    axios.get('https://jsonplaceholder.typicode.com/todos?_limit=5')
-      .then(res => this.todos = res.data)
-      .catch(err => console.log(err));
+
+    created(){
+      axios.get('http://localhost:5000/api/games')
+        .then(res => this.todos = res.data)
+        .catch(err => console.log(err));
   }
 }
 </script>

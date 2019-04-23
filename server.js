@@ -1,11 +1,14 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const items = require('./routes/api/items');
 const games = require('./routes/api/games')
 
 const app = express();
 app.use(express.json());
+
+app.use(cors());
 
 
 //DB config

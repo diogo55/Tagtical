@@ -1,8 +1,7 @@
 <template>
-    <div class="todo-item" v-bind:class="{'is-complete':todo.completed}">
+    <div class="event" v-bind:class="{'is-complete':todo.completed}">
         <p>
-            <input type="checkbox" v-on:change="markComplete">
-            {{todo.title}}
+            {{todo.teamA.name + ' vs ' + todo.teamB.name}}
             <button @click="$emit('del-todo', todo.id)" class="del">x</button>
             </p>
     </div>
@@ -21,7 +20,7 @@ export default {
 </script>
 
 <style scoped>
-    .todo-item{
+    .event{
         background: #f4f4f4;
         padding: 10px;
         border-bottom: 1px #ccc dotted;
