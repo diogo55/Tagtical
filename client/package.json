@@ -13,6 +13,7 @@
     "uuid": "^3.3.2",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
+    "vue-strap": "github:wffranco/vue-strap",
     "vuetify": "^1.5.5"
   },
   "devDependencies": {
