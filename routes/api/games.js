@@ -42,7 +42,7 @@ router.post('/', (req,res) =>{
 // @desc    Delete a Game
 // @access  Public
 router.delete('/:id', (req,res) =>{
-    Item.findById(req.params.id)
+    Game.findById(req.params.id)
         .then(game => game.remove().then(() => res.json({success: true})))
         .catch(err => res.status(404).json({success: false}));
 });

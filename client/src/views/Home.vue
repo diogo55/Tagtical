@@ -1,82 +1,32 @@
 <template>
-  <div id="app">
-    <AddTodo v-on:add-todo="addTodo" />
-    <Todos v-bind:todos="todos" v-on:del-todo="deleteTodo"/>
-  </div>
+  <v-carousel>
+    <v-carousel-item
+      v-for="(item,i) in items"
+      :key="i"
+      :src="item.src"
+    ></v-carousel-item>
+  </v-carousel>
 </template>
 
 <script>
-import Todos from '../components/Todos';
-import AddTodo from '../components/AddTodo';
-import axios from 'axios';
-
- var config = {
-    headers: {'Access-Control-Allow-Origin': '*'}
-  };
-
-
-
-export default {
-  name: 'Home',
-  components: {
-    Todos,
-    AddTodo
-  },
-  data(){
-    return {
-      todos: []
+  export default {
+    data () {
+      return {
+        items: [
+          {
+            src: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg'
+          },
+          {
+            src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg'
+          },
+          {
+            src: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg'
+          },
+          {
+            src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg'
+          }
+        ]
+      }
     }
-  },
-  methods: {
-    deleteTodo(id){
-      axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
-        .then(res => this.todos = this.todos.filter(todo => todo.id !== id) )
-        .catch(err => console.log(err));
-
-    },
-    addTodo(newTodo){
-      const { title, completed } = newTodo;
-
-      axios.post('https://jsonplaceholder.typicode.com/todos', {
-        title,
-        completed
-      })
-        .then(res => this.todos = [...this.todos, res.data])
-        .catch(err => console.log(err));
-
-    }
-  },
-
-    created(){
-      axios.get('http://localhost:5000/api/games')
-        .then(res => this.todos = res.data)
-        .catch(err => console.log(err));
   }
-}
 </script>
-
-<style>
-  *{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-
-  body {
-    font-family: Arial, Helvetica, sans-serif;
-    line-height: 1.4;
-  }
-
-  .btn{
-    display: inline-blcok;
-    border: none;
-    background: #555;
-    color: #fff;
-    padding: 7px 20px;
-    cursor: pointer;
-  }
-
-  .btn:hover {
-    background: #666;
-  }
-</style>
