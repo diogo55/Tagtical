@@ -2,7 +2,7 @@
     <header class="header">
         <div>
             <img align="right" src="../../assets/hok1.png" width=70px height=70px>
-            <img align="left" src="../../assets/hok2.png" width=70px height=70px>
+            <img align="left" src="../../assets/hok2.png" width=70px height=64px>
             <h1>Tagtical Hockey</h1>
         </div>
         <div id="nav">
