@@ -1,12 +1,18 @@
 <template>
   <v-container>
     <v-layout row wrap>
-      <v-flex xs12 >
-        <v-carousel delimiter-icon="stop">
-          <v-carousel-item v-for="(item,i) in items" :key="i" :src="item.src">
-            <div class="title">{{item.title}}</div>
-          </v-carousel-item>
+      <v-flex class="inside">
+        <h1>Welcome to Tagtical Hockey!</h1>
+      </v-flex>
+      <v-flex xs12>
+        <v-carousel delimiter-icon="fiber_manual_record">
+          <v-carousel-item v-for="(item,i) in items" :key="i" :src="item.src"></v-carousel-item>
         </v-carousel>
+      </v-flex>
+    </v-layout>
+    <v-layout>
+      <v-flex class="baixa">
+        <h1>teto</h1>
       </v-flex>
     </v-layout>
   </v-container>
@@ -35,4 +41,20 @@ export default {
 };
 </script>
 
+<style scoped>
+.inside {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  color: black;
+}
 
+.baixa{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding-top: 100px;
+  text-align: left;
+}
+</style>

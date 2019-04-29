@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Events v-bind:events="events" v-on:del-event="deleteEvent"/>
+    <Events v-bind:events="events" v-on:go-game="goGame"/>
   </div>
 </template>
 
@@ -32,6 +32,9 @@ export default {
         .catch(err => console.log(err));
 
     },
+    goGame(id){
+      this.$router.push('/events/' + id)
+    }
     /*
     addTodo(newTodo){
       const { title, completed } = newTodo;
@@ -45,6 +48,7 @@ export default {
 
     }
     */
+
   },
 
     created(){
@@ -52,8 +56,6 @@ export default {
         .then(res => this.events = res.data)
         .catch(err => console.log(err));
   }
+
 }
 </script>
-
-<style scoped>
-</style>
