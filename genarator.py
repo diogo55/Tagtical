@@ -392,10 +392,10 @@ def posGen(a):
     t = 5*60*60
     pos = posInicial(a)
     while i < 5:
-        f.write("{posX:"+str(pos[0])+",posY: "+str(pos[1])+",time:"+str(i)+"},\n")
+        f.write("{\"posX\":"+str(pos[0])+",\"posY\": "+str(pos[1])+",\"time\":"+str(i)+"},\n")
         i+=0.5
         pos=incrPos(pos)
-    f.write("{posX:"+str(pos[0])+",posY: "+str(pos[1])+",time:"+str(i)+"}\n")
+    f.write("{\"posX\":"+str(pos[0])+",\"posY\": "+str(pos[1])+",\"time\":"+str(i)+"}\n")
     i+=0.5
     pos=incrPos(pos)
     if a == 0:
@@ -403,10 +403,10 @@ def posGen(a):
     else:
         a=0
     while i<= 5*2:
-        f.write("{posX:"+str(pos[0])+",posY: "+str(pos[1])+",time:"+str(i)+"},\n")
+        f.write("{\"posX\":"+str(pos[0])+",\"posY\": "+str(pos[1])+",\"time\":"+str(i)+"},\n")
         i+=0.5
         pos=incrPos(pos)
-    f.write("{posX:"+str(pos[0])+",posY: "+str(pos[1])+",time:"+str(i)+"},\n")
+    f.write("{\"posX\":"+str(pos[0])+",\"posY\": "+str(pos[1])+",\"time\":"+str(i)+"},\n")
     pos=incrPos(pos)
 
 def posGenGK(a):
@@ -414,7 +414,7 @@ def posGenGK(a):
     t = 5*60*60
     pos = posGK(a)
     while i <= 5:
-        f.write("{posX:"+str(pos[0])+",posY: "+str(pos[1])+",time:"+str(i)+"},\n")
+        f.write("{\"posX\":"+str(pos[0])+",\"posY\": "+str(pos[1])+",\"time\":"+str(i)+"},\n")
         i+=0.5
         pos=incrPosGK(pos)
     if a == 0:
@@ -422,34 +422,34 @@ def posGenGK(a):
     else:
         a=0
     while i<= 5*2:
-        f.write("{posX:"+str(pos[0])+",posY: "+str(pos[1])+",time:"+str(i)+"}\n")
+        f.write("{\"posX\":"+str(pos[0])+",\"posY\": "+str(pos[1])+",\"time\":"+str(i)+"}\n")
         i+=0.5
         pos=incrPosGK(pos)
 
 def infoGen(a):
-    f.write("dist:" +str(round(random.uniform(5,10), 2))+",\n")
-    f.write("vel_media:" + str(round(random.uniform(3,8),2))+",\n")
-    f.write("vel_Max:" + str(round(random.uniform(5, 15),2))+"\n")
+    f.write(" \"dist\":" +str(round(random.uniform(5,10), 2))+",\n")
+    f.write("\"vel_media\":" + str(round(random.uniform(3,8),2))+",\n")
+    f.write("\"vel_Max\":" + str(round(random.uniform(5, 15),2))+"\n")
 
     
 def playerGen(a):
-    f.write("{\n name: "+random.choice(listaNomes)+" "+ random.choice(listaApelidos)+", \n")
-    f.write("data:{\n")
+    f.write("{\n \"name\": \""+random.choice(listaNomes)+" "+ random.choice(listaApelidos)+"\", \n")
+    f.write("\"data\":{\n")
     infoGen(a)
-    f.write("},\n pos: [ \n")
+    f.write("},\n \"pos\": [ \n")
     posGen(a)
     f.write("] }")
 
 def gkGen(a):
-    f.write("{\n name: "+random.choice(listaNomes)+" "+ random.choice(listaApelidos)+", \n")
-    f.write("data:{\n")
+    f.write("{\n \"name\": \""+random.choice(listaNomes)+" "+ random.choice(listaApelidos)+"\", \n")
+    f.write("\"data\":{\n")
     infoGen(a)
-    f.write("},\n pos: [ \n")
+    f.write("},\n \"pos\": [ \n")
     posGenGK(a)
     f.write("] }")
 
 def teamGen(team, i):
-    f.write("name: "+team +",\n players: [\n")
+    f.write("\"name\": \""+team +"\",\n \"players\": [\n")
     gkGen(i)
     for a in range(0,4):
         f.write(",")
@@ -457,10 +457,10 @@ def teamGen(team, i):
     f.write("] \n")
 
 def main():
-    f.write("{\n teamA: {\n")
+    f.write("{\n \"teamA\": {\n")
     teamA = random.choice(teams)
     teamGen(teamA,0)
-    f.write("},\n teamB: {\n")
+    f.write("},\n \"teamB\": {\n")
     teamB= random.choice(teams)
     while (teamA == teamB):
             teamB= random.choice(teams)
