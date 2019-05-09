@@ -395,18 +395,15 @@ def posGen(a):
         f.write("{\"posX\":"+str(pos[0])+",\"posY\": "+str(pos[1])+",\"time\":"+str(i)+"},\n")
         i+=0.5
         pos=incrPos(pos)
-    f.write("{\"posX\":"+str(pos[0])+",\"posY\": "+str(pos[1])+",\"time\":"+str(i)+"}\n")
-    i+=0.5
-    pos=incrPos(pos)
     if a == 0:
         a=1
     else:
         a=0
-    while i<= 5*2:
+    while i< 5*2:
         f.write("{\"posX\":"+str(pos[0])+",\"posY\": "+str(pos[1])+",\"time\":"+str(i)+"},\n")
         i+=0.5
         pos=incrPos(pos)
-    f.write("{\"posX\":"+str(pos[0])+",\"posY\": "+str(pos[1])+",\"time\":"+str(i)+"},\n")
+    f.write("{\"posX\":"+str(pos[0])+",\"posY\": "+str(pos[1])+",\"time\":"+str(i)+"}\n")
     pos=incrPos(pos)
 
 def posGenGK(a):
@@ -421,10 +418,13 @@ def posGenGK(a):
         a=1
     else:
         a=0
-    while i<= 5*2:
-        f.write("{\"posX\":"+str(pos[0])+",\"posY\": "+str(pos[1])+",\"time\":"+str(i)+"}\n")
+    while i< 5*2:
+        f.write("{\"posX\":"+str(pos[0])+",\"posY\": "+str(pos[1])+",\"time\":"+str(i)+"},\n")
         i+=0.5
         pos=incrPosGK(pos)
+    f.write("{\"posX\":"+str(pos[0])+",\"posY\": "+str(pos[1])+",\"time\":"+str(i)+"}\n")
+    pos=incrPosGK(pos)
+
 
 def infoGen(a):
     f.write(" \"dist\":" +str(round(random.uniform(5,10), 2))+",\n")
