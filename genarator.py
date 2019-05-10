@@ -429,7 +429,7 @@ def posGenGK(a):
 def infoGen(a):
     f.write(" \"dist\":" +str(round(random.uniform(5,10), 2))+",\n")
     f.write("\"vel_media\":" + str(round(random.uniform(3,8),2))+",\n")
-    f.write("\"vel_Max\":" + str(round(random.uniform(5, 15),2))+"\n")
+    f.write("\"vel_max\":" + str(round(random.uniform(5, 15),2))+"\n")
 
     
 def playerGen(a):
