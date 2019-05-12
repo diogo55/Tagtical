@@ -3,7 +3,7 @@
 
       <v-btn @click="$emit('go-game', event._id)" block class="event" >
           
-          {{event.teamA.name + ' vs ' + event.teamB.name }} 
+          {{event.teamA.name + ' vs ' + event.teamB.name}} 
           {{event.date}}
       </v-btn>
       
@@ -19,7 +19,7 @@ export default {
 
 <style scoped>
 .event {
-  color:#f4f4f4;
+  color:#070707;
   padding: 10px;
   border-bottom: 1px #ccc dotted;
   text-align: center;
