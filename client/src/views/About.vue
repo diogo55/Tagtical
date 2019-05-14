@@ -1,33 +1,28 @@
 <template>
-  <vue-p5 v-on="{setup,draw}"></vue-p5>
+  <v-container>
+    <vgl-renderer antialias style="height: 100vh;">
+      <vgl-scene>
+        <vgl-sphere-geometry name="sphere"></vgl-sphere-geometry>
+        <vgl-mesh-standard-material name="std"></vgl-mesh-standard-material>
+        <vgl-mesh geometry="sphere" material="std"></vgl-mesh>
+        <vgl-ambient-light color="#ffeecc"></vgl-ambient-light>
+        <vgl-directional-light position="0 1 1"></vgl-directional-light>
+      </vgl-scene>
+      <vgl-perspective-camera orbit-position="5 1 1;"></vgl-perspective-camera>
+    </vgl-renderer>
+  </v-container>
 </template>
 
 
 <script>
-import VueP5 from 'vue-p5'
+import * as VueGL from 'vue-gl'
+
+var position = {x:200, y:200},
+  target = {x:400, y:400}
 
 export default{
   components:{
-    "vue-p5": VueP5
-  },
-  methods:{
-    setup(sketch){
-      x = 0;
-      y = 0;
-      sketch.resizeCanvas(400,400);
-    },
-    draw(sketch){
-      sketch.background("darkgreen");
-      sketch.fill(0);
-      sketch.ellipse(x, y, 10,10);
-
-      x = x+random(-1,1);
-      y = y-1;
-
-      if(y < 0 ){
-        y = height;
-      }
-    }
+    "vue-gl": VueGL
   }
 }
 

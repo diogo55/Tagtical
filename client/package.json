@@ -12,7 +12,7 @@
     "core-js": "^2.6.5",
     "uuid": "^3.3.2",
     "vue": "^2.6.10",
-    "vue-p5": "^0.7.1",
+    "vue-gl": "^0.12.2",
     "vue-router": "^3.0.3",
     "vue-strap": "github:wffranco/vue-strap",
     "vuetify": "^1.5.5"
