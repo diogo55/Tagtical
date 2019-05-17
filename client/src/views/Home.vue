@@ -12,7 +12,7 @@
     </v-layout>
     <v-layout>
       <v-flex class="baixa">
-        <h1>teto</h1>
+        <h1>cenas</h1>
       </v-flex>
     </v-layout>
   </v-container>

@@ -2,7 +2,7 @@
   <v-container>
     <v-layout row wrap>
       <v-flex>
-        <SingleEvent v-bind:gamedata="gamedata"/>
+        <SingleEvent v-bind:gamedata="gamedata" v-on:view-game="viewGame"/>
       </v-flex>
     </v-layout>
   </v-container>
@@ -20,6 +20,12 @@ export default {
   data(){
     return {
       gamedata: []
+    }
+  },
+
+  methods:{
+    viewGame(id){
+      window.open('http://localhost:5000/files/'+id)
     }
   },
 

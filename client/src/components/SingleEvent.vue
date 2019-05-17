@@ -2,6 +2,10 @@
   <v-container >
     <v-layout row wrap>
       <v-flex xs6>
+      <v-btn @click="$emit('view-game', gamedata._id)" v-bind:key="gamedata._id">
+        {{gamedata._id}}
+
+      </v-btn>
         <v-card height=auto width=500 color="blue-grey">
           <v-card-title class="justify-center">
           </v-card-title>

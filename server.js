@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 const items = require('./routes/api/items');
-const games = require('./routes/api/games')
+const games = require('./routes/api/games');
+const files = require('./routes/static/files');
 
 const app = express();
 app.use(express.json());
@@ -23,6 +24,7 @@ mongoose
 // Use Routes
 app.use('/api/items',items);
 app.use('/api/games',games);
+app.use('/files',files);
 
 const port = process.env.port || 5000;
     
