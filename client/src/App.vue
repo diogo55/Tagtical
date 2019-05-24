@@ -25,7 +25,7 @@ export default {
   body {
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.4;
-    background: rgb(129, 122, 122);
+    background:  rgba(21, 101, 136, 0.7);
   }
   .btn{
     display: inline-blcok;

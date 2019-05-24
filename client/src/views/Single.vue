@@ -25,7 +25,7 @@ export default {
 
   methods:{
     viewGame(id){
-      window.open('http://localhost:5000/files/'+id)
+      window.open('http://localhost:5000/files/'+id+'/sh.html')
     }
   },
 
