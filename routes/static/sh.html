@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset=utf-8>
+	<title>My first three.js app</title>
+	<style>
+		body {
+			margin: 0;
+		}
+
+		canvas {
+			background-color: blue;
+			width: 640px;
+			height: 360px;
+			margin: auto;
+			width: 100%;
+			height: 100%
+		}
+	</style>
+</head>
+
+<body onload='init();'>
+	<h1>Hello</h1>
+	<div id='canvas'></div>
+	<script type='text/javascript' src="three.min.js">
+	</script>
+	<script src="OBJLoader.js">
+	</script>
+	<script src="OrbitControls.js"></script>
+	<script>
+		//--------------------------//
+		//---- GLOBAL VARIABLES ----//
+		//--------------------------//
+
+		//scene
+		var renderer, scene, camera, pointLight
+
+		//field variables
+		var fieldWidth = 400,
+			fieldHeight = 200;
+
+		//goal variables
+		var goal1, goal2;
+		var goalWidth, goalHeight, goalDepth, goalQuality;
+		var goal1DirY = 0,
+			goal2DirY = 0,
+			goalSpeed = 3;
+
+		//ball variables
+		var ball, goal1, goal2;
+		var ballDirX = 1,
+			ballDirY = 1,
+			ballSpeed = 2;
+
+		//Player variables
+		var player;
+		var playerDirX = 1,
+			playerDirY = 1,
+			playerSpeed = 2;
+
+
+
+		function init() {
+
+
+			//define a renderer
+			renderer = new THREE.WebGLRenderer();
+
+
+			renderer.setSize(window.innerWidth, window.innerHeight);
+			var c = document.getElementById("canvas");
+			c.appendChild(renderer.domElement);
+
+			//document.body.appendChild(this.renderer.domElement);
+
+			//Create a scene
+			scene = new THREE.Scene();
+
+			// params: VIEW_ANGLE, ASPECT, NEAR, FAR
+			camera = new THREE.PerspectiveCamera(100,
+				window.innerWidth / window.innerHeight,
+				0.1,
+				1000);
+
+			var controls = new THREE.OrbitControls(camera);
+			// default position for camera not doing this messes with shadows.
+			camera.position.z = 200;
+			controls.update();
+
+			/*
+            var light = new THREE.AmbientLight( 0x404040);
+            scene.add(light);
+			
+            // // create a point light
+            pointLight = new THREE.PointLight(0xF8D898);
+
+            // set its position
+            pointLight.position.x = -1000;
+            pointLight.position.y = 0;
+            pointLight.position.z = 1000;
+            pointLight.intensity = 2.9;
+            pointLight.distance = 10000;
+
+            // add to the scene
+            scene.add(pointLight);
+            */
+
+
+			//add a spot light
+			spotLight = new THREE.SpotLight(0xF8D898);
+			spotLight.position.set(0, 0, 460);
+			spotLight.intensity = 1.5;
+			spotLight.castShadow = true;
+			scene.add(spotLight);
+
+			//renderer.shadowMapEnabled = true;
+
+
+			//Create Ball
+			var radius = 10,
+				segments = 6,
+				rings = 6;
+
+			var sphereMaterial = new THREE.MeshLambertMaterial({
+				color: 0xD43001,
+				//emissive: 0xD43001
+			});
+
+			var geo = new THREE.SphereGeometry(radius, segments, rings);
+
+			ball = new THREE.Mesh(geo, sphereMaterial);
+
+			scene.add(ball);
+
+			var texture = new THREE.TextureLoader().load(
+				'field2.png'
+			);
+
+			//Create Field
+			var planeMaterial = new THREE.MeshLambertMaterial({
+				map: texture
+				//color: 0x0061C3,
+				//emissive: 0x4BD121
+			})
+
+			var geo2 = new THREE.PlaneGeometry(fieldWidth * 0.95,
+				fieldHeight,
+				10,
+				10)
+
+			var plane = new THREE.Mesh(geo2, planeMaterial);
+
+			scene.add(plane);
+
+			var loader = new THREE.CubeTextureLoader();
+			loader.setPath('./');
+
+			var textureCube = loader.load([
+				'net1.png', 'net1.png',
+				'net1.png', 'net1.png',
+				'net1.png', 'net1.png',
+			]);
+
+
+			var texture2 = new THREE.TextureLoader().load(
+				'net1.png'
+			);
+
+			//Create Goals
+			var goalMaterial = new THREE.MeshLambertMaterial({
+				map: texture2
+				//emissive: 0xD25122
+			})
+
+			goalWidth = 10;
+			goalHeight = 30;
+			goalDepth = 10;
+			goalQuality = 1;
+
+			var geo3 = new THREE.BoxGeometry(
+				goalWidth,
+				goalHeight,
+				goalDepth,
+				goalQuality,
+				goalQuality,
+				goalQuality
+			);
+
+			goal1 = new THREE.Mesh(geo3, goalMaterial);
+			goal2 = new THREE.Mesh(geo3, goalMaterial);
+
+			scene.add(goal1);
+			scene.add(goal2);
+
+			//set goals in oposite sides of field
+			goal1.position.x = -fieldWidth / 2 + goalWidth + 25;
+			goal2.position.x = fieldWidth / 2 - goalWidth - 25;
+
+			//lift goals over surface
+			goal1.position.z = goalDepth;
+			goal2.position.z = goalDepth;
+
+			var loader = new THREE.ObjectLoader();
+
+			loader.load(
+				"hockeybro.json",
+				function (obj) {
+					obj.scale.set(4, 4, 4);
+					player = obj;
+					scene.add(player)
+				},
+				function (xhr) {
+					console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+				},
+				function (err) {
+					console.error('An error happened');
+				}
+			)
+
+			/*
+			loader.load(
+				"lowpolytree.json",
+				function (obj) {
+					obj.position.z = 10
+					obj.rotation.x = 1.6
+					obj.scale.set(10, 10, 10);
+					
+					scene.add(obj)
+				},
+				function (xhr) {
+					console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+				},
+				function (err) {
+					console.error('An error happened');
+				}
+			)
+				*/
+
+			
+
+
+
+
+			/*
+			var geometry = new THREE.BoxGeometry(1, 1, 1);
+			var material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+			var cube = new THREE.Mesh(geometry, material);
+			scene.add(cube);*/
+
+			/*var manager = new THREE.LoadingManager();
+
+			manager.onStart = function (url, itemsLoaded, itemsTotal) {
+
+				console.log('Started loading file: ' + url + '.\nLoaded ' +
+					itemsLoaded + ' of ' + itemsTotal + ' files.');
+			};
+
+			manager.onLoad = function () {
+				console.log('Loading Complete!');
+			};
+
+			manager.onProgress = function (url, itemsLoaded, itemsTotal) {
+				console.log('Loading file: ' + url + '.\nLoaded' + itemsLoaded + ' of' + itemsTotal + ' files.');
+			};
+
+			manager.onError = function (url) {
+				console.log('There was an error loading' + url);
+			};
+
+			var loader = new THREE.OBJLoader(manager);
+
+		
+			loader.load('lowpolytree.obj',
+
+				function (object) {
+					object.scale.set(1, 1, 1);
+					this.model = object
+					this.scene.add(this.model);
+				},
+				function (xhr) {
+					console.log((xhr.loaded / xhr.total * 100) + '%loaded');
+				},
+				function (error) {
+					console.log('An error happened');
+				}
+			)*/
+
+			animate();
+		}
+
+		function animate() {
+			//cube.rotation.x += 0.01;
+			//cube.rotation.y += 0.01;
+			renderer.render(scene, camera);
+
+			requestAnimationFrame(animate);
+
+			if(player){
+				playerPhysics();
+			}
+			ballPhysics();
+			goalPhysics();
+			//if (this.model) {
+
+			//	this.model.rotation.x += 0.01;
+			//	}
+
+		}
+
+		function playerPhysics(){
+
+			if(player.position.y <= -fieldHeight/2){
+				playerDirY = -playerDirY;
+			}
+			if (player.position.y >= fieldHeight / 2) {
+				playerDirY = -playerDirY
+			}
+			if (player.position.x <= -fieldWidth / 2) {
+				playerDirX = -playerDirX;
+			}
+			if (player.position.x >= fieldWidth / 2) {
+				playerDirX = -playerDirX
+			}
+
+
+			player.position.x += playerDirX * playerSpeed;
+			player.position.y += playerDirY * playerSpeed;
+			
+		}
+
+		function ballPhysics() {
+
+			if (ball.position.y <= -fieldHeight / 2) {
+				ballDirY = -ballDirY;
+			}
+			if (ball.position.y >= fieldHeight / 2) {
+				ballDirY = -ballDirY
+			}
+			if (ball.position.x <= -fieldWidth / 2) {
+				ballDirX = -ballDirX;
+			}
+			if (ball.position.x >= fieldWidth / 2) {
+				ballDirX = -ballDirX
+			}
+
+
+			ball.position.x += ballDirX * ballSpeed;
+			ball.position.y += ballDirY * ballSpeed;
+		}
+
+		function goalPhysics() {
+			// PLAYER goal LOGICpaddle
+
+			// if ball is aligned with goal1 on x plane
+			// remember the position is the CENTER of the object
+			// we only check between the front and the middle of the goal (one-way collision)
+			if (ball.position.x <= goal1.position.x + goalWidth &&
+				ball.position.x >= goal1.position.x) {
+				// and if ball is aligned with goal1 on y plane
+				if (ball.position.y <= goal1.position.y + goalHeight / 2 &&
+					ball.position.y >= goal1.position.y - goalHeight / 2) {
+					// and if ball is travelling towards player (-ve direction)
+					if (ballDirX < 0) {
+						// switch direction of ball travel to create bounce
+						ballDirX = -ballDirX;
+						// we impact ball angle when hitting it
+						// this is not realistic physics, just spices up the gameplay
+						// allows you to 'slice' the ball to beat the opponent
+						ballDirY -= goal1DirY * 0.7;
+					}
+				}
+			}
+
+			// OPPONENT goal LOGIC	
+
+			// if ball is aligned with goal2 on x plane
+			// remember the position is the CENTER of the object
+			// we only check between the front and the middle of the goal (one-way collision)
+			if (ball.position.x <= goal2.position.x + goalWidth &&
+				ball.position.x >= goal2.position.x) {
+				// and if ball is aligned with goal2 on y plane
+				if (ball.position.y <= goal2.position.y + goalHeight / 2 &&
+					ball.position.y >= goal2.position.y - goalHeight / 2) {
+					// and if ball is travelling towards opponent (+ve direction)
+					if (ballDirX > 0) {
+						// switch direction of ball travel to create bounce
+						ballDirX = -ballDirX;
+						// we impact ball angle when hitting it
+						// this is not realistic physics, just spices up the gameplay
+						// allows you to 'slice' the ball to beat the opponent
+						ballDirY -= goal2DirY * 0.7;
+					}
+				}
+			}
+		}
+	</script>
+</body>
+
+
+</html>
