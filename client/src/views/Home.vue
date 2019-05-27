@@ -9,7 +9,7 @@
             <v-flex class="inside">
               <h1 class="fonte">Welcome to Tagtical Hockey!</h1>
             </v-flex>
-            <v-flex pa-3 align-center>
+            <v-flex pa-5 align-center>
               <v-carousel delimiter-icon="fiber_manual_record" max="0px">
                 <v-carousel-item v-for="(item,i) in items" :key="i" :src="item.src"></v-carousel-item>
               </v-carousel>
@@ -24,10 +24,10 @@
     <v-container>
       <v-layout row wrap>
         <v-flex xs6 sm4>
-          <v-card min-height="232px" elevation="10" class="text-xs-center ma-3" color="rgb(21, 150, 146,0.5)">
+          <v-card min-height="384px" max-height="465px"   elevation="10" class="text-xs-center ma-3" color="rgb(21, 150, 146,0.5)">
             <v-card-text style="font-family:Pacifico,cursive;font-size:35px">Coaches</v-card-text>
             <v-responsive>
-              <v-img :src="require('../assets/hoq1.jpg')" height="100px"></v-img>
+              <v-img :src="require('../assets/coach.png')" ></v-img>
             </v-responsive>
             <v-card-text
               style="font-family:Oxygen, sans-serif; font-size:20px"
@@ -35,10 +35,10 @@
           </v-card>
         </v-flex>
         <v-flex xs6 sm4>
-          <v-card min-height="232px" elevation="10" class="text-xs-center ma-3" color="rgb(21, 150, 146,0.5)">
+          <v-card min-height="384px" max-height="465px"  elevation="10" class="text-xs-center ma-3" color="rgb(21, 150, 146,0.5)">
             <v-card-text style="font-family:Pacifico,cursive;font-size:35px">Scouts</v-card-text>
             <v-responsive>
-              <v-img :src="require('../assets/hoq1.jpg')" height="100px"></v-img>
+              <v-img justify-end :src="require('../assets/scout.png')" ></v-img>
             </v-responsive>
             <v-card-text
               style="font-family:Oxygen, sans-serif; font-size:20px"
