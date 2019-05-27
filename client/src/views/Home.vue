@@ -24,7 +24,7 @@
     <v-container>
       <v-layout row wrap>
         <v-flex xs6 sm4>
-          <v-card min-height="232px" class="text-xs-center ma-3" color="rgb(21, 101, 146,0.5)">
+          <v-card min-height="232px" elevation="10" class="text-xs-center ma-3" color="rgb(21, 150, 146,0.5)">
             <v-card-text style="font-family:Pacifico,cursive;font-size:35px">Coaches</v-card-text>
             <v-responsive>
               <v-img :src="require('../assets/hoq1.jpg')" height="100px"></v-img>
@@ -35,7 +35,7 @@
           </v-card>
         </v-flex>
         <v-flex xs6 sm4>
-          <v-card min-height="232px" class="text-xs-center ma-3" color="rgb(21, 101, 146,0.5)">
+          <v-card min-height="232px" elevation="10" class="text-xs-center ma-3" color="rgb(21, 150, 146,0.5)">
             <v-card-text style="font-family:Pacifico,cursive;font-size:35px">Scouts</v-card-text>
             <v-responsive>
               <v-img :src="require('../assets/hoq1.jpg')" height="100px"></v-img>
@@ -47,7 +47,7 @@
         </v-flex>
 
         <v-flex xs6 sm4>
-          <v-card min-height="232px" class="text-xs-center ma-3" color="rgb(21, 101, 146,0.5)">
+          <v-card min-height="232px" elevation="10" class="text-xs-center ma-3" color="rgb(21, 150, 146,0.5)">
             <v-card-text style="font-family:Pacifico,cursive;font-size:35px">Fans</v-card-text>
             <v-responsive>
               <v-img :src="require('../assets/hoq1.jpg')" height="100px"></v-img>
@@ -126,6 +126,9 @@ export default {
     };
   }
 };
+
+// v-card old color rgb(21, 101, 146,0.5)
+
 </script>
 
 <style scope>

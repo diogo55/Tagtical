@@ -21,9 +21,11 @@
   },
   "homepage": "https://github.com/45Yoda/Tagtical#readme",
   "dependencies": {
+    "apexcharts": "^3.7.0",
     "concurrently": "^4.1.0",
     "cors": "^2.8.5",
     "express": "^4.16.4",
-    "mongoose": "^5.5.1"
+    "mongoose": "^5.5.1",
+    "vue-apexcharts": "^1.3.5"
   }
 }

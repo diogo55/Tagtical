@@ -13,6 +13,9 @@ export default {
       Header
     }
 }
+
+//rgb(21, 150, 146,0.5)
+//rgba(21, 101, 136, 0.7);
 </script>
 
 
