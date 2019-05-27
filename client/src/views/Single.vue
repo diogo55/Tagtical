@@ -37,12 +37,14 @@
 
 <script>
 import SingleEvent from "../components/SingleEvent";
+import HeatMap from "../components/HeatMap";
 import axios from 'axios';
 
 export default {
   name: "Single",
   components: {
-    SingleEvent
+    SingleEvent,
+    HeatMap
   },
   data(){
     return {
