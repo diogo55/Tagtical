@@ -1,5 +1,5 @@
 <template>
-<div>
+<div >
      <apexchart v-if="gamedata" width="500" type="heatmap" :options="chartOptions" :series="series"></apexchart>
    </div>
 </template>

@@ -7,12 +7,13 @@ import 'vuetify/dist/vuetify.min.css'
 import VueApexCharts from 'vue-apexcharts'
 
 
-Vue.config.productionTip = false
-
-Vue.use(Vuetify)
 Vue.use(VueApexCharts)
+Vue.use(Vuetify)
 
 Vue.component('apexchart',VueApexCharts)
+Vue.config.productionTip = false
+
+
 
 
 new Vue({
