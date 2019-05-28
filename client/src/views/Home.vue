@@ -24,10 +24,16 @@
     <v-container>
       <v-layout row wrap>
         <v-flex xs6 sm4>
-          <v-card min-height="384px" max-height="465px"   elevation="10" class="text-xs-center ma-3" color="rgb(21, 150, 146,0.5)">
+          <v-card
+            min-height="384px"
+            max-height="465px"
+            elevation="10"
+            class="text-xs-center ma-3"
+            color="rgba(21, 150, 146,0.5)"
+          >
             <v-card-text style="font-family:Pacifico,cursive;font-size:35px">Coaches</v-card-text>
             <v-responsive>
-              <v-img :src="require('../assets/coach.png')" ></v-img>
+              <v-img :src="require('../assets/coach.png')"></v-img>
             </v-responsive>
             <v-card-text
               style="font-family:Oxygen, sans-serif; font-size:20px"
@@ -35,10 +41,16 @@
           </v-card>
         </v-flex>
         <v-flex xs6 sm4>
-          <v-card min-height="384px" max-height="465px"  elevation="10" class="text-xs-center ma-3" color="rgb(21, 150, 146,0.5)">
+          <v-card
+            min-height="384px"
+            max-height="465px"
+            elevation="10"
+            class="text-xs-center ma-3"
+            color="rgba(21, 150, 146,0.5)"
+          >
             <v-card-text style="font-family:Pacifico,cursive;font-size:35px">Scouts</v-card-text>
             <v-responsive>
-              <v-img justify-end :src="require('../assets/scout.png')" ></v-img>
+              <v-img max-height="300px" :src="require('../assets/scout.png')"></v-img>
             </v-responsive>
             <v-card-text
               style="font-family:Oxygen, sans-serif; font-size:20px"
@@ -47,10 +59,16 @@
         </v-flex>
 
         <v-flex xs6 sm4>
-          <v-card min-height="232px" elevation="10" class="text-xs-center ma-3" color="rgb(21, 150, 146,0.5)">
+          <v-card
+            min-height="384px"
+            max-height="465px"
+            elevation="10"
+            class="text-xs-center ma-3"
+            color="rgba(21, 150, 146,0.5)"
+          >
             <v-card-text style="font-family:Pacifico,cursive;font-size:35px">Fans</v-card-text>
             <v-responsive>
-              <v-img :src="require('../assets/hoq1.jpg')" height="100px"></v-img>
+              <v-img :src="require('../assets/fan.png')"></v-img>
             </v-responsive>
             <v-card-text
               style="font-family:Oxygen, sans-serif; font-size:20px"
@@ -67,38 +85,34 @@
           <img src="../assets/logo.png">
         </v-flex>
         <v-flex xs6 class="text-xs-left">
-          <h1>Perfect for coaches</h1>
-           <p>
-      Watch any game you might have missed / Look at Heatmaps generated for each team / Look at player statistics such
-      as maximum velocity, acceleration and distance traveled.
-      Easily understand what is happening in the game and what needs to be better in your team with Tagtical Hockey
-    </p>
+          <h1>Watch the game!</h1>
+          <p>
+            Watch any game you might have missed from your favourite teams
+            Watch any game you might have missed / Look at Heatmaps generated for each team / Look at player statistics such
+            as maximum velocity, acceleration and distance traveled.
+            Easily understand what is happening in the game and what needs to be better in your team with Tagtical Hockey
+          </p>
         </v-flex>
       </v-layout>
       <v-layout class="text-xs-left" xs6>
-      
         <v-flex xs6 class="text-xs-right">
           <h1>Perfect for coaches</h1>
-           <p>
-      Watch any game you might have missed / Look at Heatmaps generated for each team / Look at player statistics such
-      as maximum velocity, acceleration and distance traveled.
-      Easily understand what is happening in the game and what needs to be better in your team with Tagtical Hockey
-    </p>
+          <p>
+            Watch any game you might have missed / Look at Heatmaps generated for each team / Look at player statistics such
+            as maximum velocity, acceleration and distance traveled.
+            Easily understand what is happening in the game and what needs to be better in your team with Tagtical Hockey
+          </p>
         </v-flex>
-          <v-flex>
+        <v-flex>
           <img src="../assets/logo.png">
         </v-flex>
       </v-layout>
     </v-container>
 
-    <h2>Scouts</h2>
-    <h3>Or just fans who want to be up to date with their favourite teams</h3>
-    <h1>Perfect for coaches</h1>
-    <p>
-      Watch any game you might have missed / Look at Heatmaps generated for each team / Look at player statistics such
-      as maximum velocity, acceleration and distance traveled.
-      Easily understand what is happening in the game and what needs to be better in your team with Tagtical Hockey
-    </p>
+    <div class="text-xs-center f2"> 
+      <h1>Start using Tagtical Hockey now and become the best!</h1>
+      <router-link class="btn2" to="/events" tag="button">Events</router-link>
+    </div>
   </div>
 </template>
 
@@ -106,9 +120,6 @@
 export default {
   data() {
     return {
-      img: {
-        src: require("../assets/logo.png")
-      },
       items: [
         {
           src: require("../assets/hoq1.jpg")
@@ -128,7 +139,6 @@ export default {
 };
 
 // v-card old color rgb(21, 101, 146,0.5)
-
 </script>
 
 <style scope>
@@ -144,6 +154,22 @@ export default {
   align-items: center;
   justify-content: center;
 }
+
+.f2 {
+  font-family: "Oxygen", sans-serif;
+  font-size: 24px
+}
+
+.btn2{
+    display: inline-blcok;
+    border: none;
+    background: rgb(9, 118, 161);
+    padding: 7px 20px;
+    cursor: pointer;
+  }
+  .btn2:hover {
+    background: rgb(7, 82, 112);
+  }
 
 .fonte {
   font-family: "Oxygen", sans-serif;
