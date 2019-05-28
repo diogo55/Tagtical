@@ -5,6 +5,11 @@ Spyder Editor
 This is a temporary script file.
 """
 import random
+import pymongo 
+from pymongo import MongoClient 
+
+myclient = pymongo.MongoClient("mongodb://localhost:27017/")
+mydb = myclient["games"]
 
 f = open("out.txt",'w')
 
@@ -389,9 +394,9 @@ def incrPosGK(a):
     
 def posGen(a):
     i = 0
-    t = 5*60*60
+    t = 25*60
     pos = posInicial(a)
-    while i < 5:
+    while i < t:
         f.write("{\"posX\":"+str(pos[0])+",\"posY\": "+str(pos[1])+",\"time\":"+str(i)+"},\n")
         i+=0.5
         pos=incrPos(pos)
@@ -399,7 +404,7 @@ def posGen(a):
         a=1
     else:
         a=0
-    while i< 5*2:
+    while i< t*2:
         f.write("{\"posX\":"+str(pos[0])+",\"posY\": "+str(pos[1])+",\"time\":"+str(i)+"},\n")
         i+=0.5
         pos=incrPos(pos)
@@ -408,9 +413,9 @@ def posGen(a):
 
 def posGenGK(a):
     i = 0
-    t = 5*60*60
+    t = 25*60
     pos = posGK(a)
-    while i <= 5:
+    while i <= t:
         f.write("{\"posX\":"+str(pos[0])+",\"posY\": "+str(pos[1])+",\"time\":"+str(i)+"},\n")
         i+=0.5
         pos=incrPosGK(pos)
@@ -418,7 +423,7 @@ def posGenGK(a):
         a=1
     else:
         a=0
-    while i< 5*2:
+    while i < t*2:
         f.write("{\"posX\":"+str(pos[0])+",\"posY\": "+str(pos[1])+",\"time\":"+str(i)+"},\n")
         i+=0.5
         pos=incrPosGK(pos)
@@ -457,6 +462,7 @@ def teamGen(team, i):
     f.write("] \n")
 
 def main():
+    print(myclient.list_database_names())
     f.write("{\n \"teamA\": {\n")
     teamA = random.choice(teams)
     teamGen(teamA,0)
@@ -466,7 +472,8 @@ def main():
             teamB= random.choice(teams)
     teamGen(teamB,1)
     f.write("}\n }")
-    f.close()    
+    f.close() 
+       
 
 
 if __name__ == '__main__':
