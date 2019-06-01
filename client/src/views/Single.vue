@@ -3,26 +3,22 @@
 <v-container fluid grid-list-xl >
     <v-layout row justify-center>
       <v-flex xs4>
-        <th>Primeira Parte</th>
-        <HeatMap v-bind:gamedata="gamedata" team='A' parte='1'/>
+        <HeatMap v-bind:gamedata="gamedata.teamA" parte='Primeira Parte'/>
       </v-flex>
       <v-flex xs1>
       </v-flex>
       <v-flex xs4>
-        <th> Primeira Parte</th>
-        <HeatMap v-bind:gamedata="gamedata" team='B' parte='2'/>
+        <HeatMap v-bind:gamedata="gamedata.teamB" parte='Primeira Parte'/>
       </v-flex>
     </v-layout>
      <v-layout row justify-center>
       <v-flex xs4>
-        <th> Segunda Parte</th>
-        <HeatMap v-bind:gamedata="gamedata" team='A' parte='2'/>
+        <HeatMap v-bind:gamedata="gamedata.teamA" parte='Segunda Parte'/>
       </v-flex>
       <v-flex xs1>
       </v-flex>
       <v-flex xs4>
-        <th> Segunda Parte</th>
-        <HeatMap v-bind:gamedata="gamedata" team='B' parte='1'/>
+        <HeatMap v-bind:gamedata="gamedata.teamB" parte='Segunda Parte'/>
       </v-flex>
     </v-layout>
   </v-container>
