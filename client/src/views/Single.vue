@@ -1,5 +1,6 @@
 <template>
 <div>
+  <Sidebar v-bind:gamedata="gamedata"/>
 <v-container fluid grid-list-xl >
     <v-layout row justify-center>
       <v-flex xs4>
@@ -22,21 +23,24 @@
       </v-flex>
     </v-layout>
   </v-container>
-    <SingleEvent v-bind:gamedata="gamedata" v-on:view-game="viewGame"/>
+    <SingleEvent v-bind:gamedata="gamedata.teamA" v-on:view-game="viewGame"/>
+        <SingleEvent v-bind:gamedata="gamedata.teamB" v-on:view-game="viewGame"/>
 </div>
 </template>
 
 
 <script>
 import SingleEvent from "../components/SingleEvent";
-import HeatMap from "../components/HeatMap"
+import HeatMap from "../components/HeatMap";
 import axios from 'axios';
+import Sidebar from "../components/Sidebar";
 
 export default {
   name: "Single",
   components: {
     SingleEvent,
-    HeatMap
+    HeatMap,
+    Sidebar
   },
   data(){
     return {
