@@ -2,7 +2,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
-const items = require('./routes/api/items');
 const games = require('./routes/api/games');
 const files = require('./routes/files');
 //const files = require('./routes/static/files');
@@ -24,7 +23,6 @@ mongoose
     .catch(err => console.log(err));
 
 // Use Routes
-app.use('/api/items',items);
 app.use('/api/games',games);
 app.use('/files',files);
 //app.use('/files/:id',express.static('./routes/static'));

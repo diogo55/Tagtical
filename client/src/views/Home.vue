@@ -82,15 +82,13 @@
     <v-container grid-list-md>
       <v-layout class="text-xs-right" xs6>
         <v-flex>
-          <img src="../assets/logo.png">
+          <img height="160px" width="250px"  src="../assets/tv.png">
         </v-flex>
         <v-flex xs6 class="text-xs-left">
           <h1>Watch the game!</h1>
           <p>
-            Watch any game you might have missed from your favourite teams
-            Watch any game you might have missed / Look at Heatmaps generated for each team / Look at player statistics such
-            as maximum velocity, acceleration and distance traveled.
-            Easily understand what is happening in the game and what needs to be better in your team with Tagtical Hockey
+            Watch any game you might have missed from your favourite teams. Through the visualization page you can see 
+            how the players moved during the game.
           </p>
         </v-flex>
       </v-layout>
@@ -98,19 +96,18 @@
         <v-flex xs6 class="text-xs-right">
           <h1>Perfect for coaches</h1>
           <p>
-            Watch any game you might have missed / Look at Heatmaps generated for each team / Look at player statistics such
-            as maximum velocity, acceleration and distance traveled.
-            Easily understand what is happening in the game and what needs to be better in your team with Tagtical Hockey
+            Look at Heatmaps generated for your team to better understand their movement around the ring.
+            Learn players' strengths and weaknesses through their statistics such as maximum velocity acceleration and distance traveled
           </p>
         </v-flex>
         <v-flex>
-          <img src="../assets/logo.png">
+          <img height="160px" width="250px" src="../assets/tactic.png">
         </v-flex>
       </v-layout>
     </v-container>
 
     <div class="text-xs-center f2"> 
-      <h1>Start using Tagtical Hockey now and become the best!</h1>
+      <h1>Easily understand what is happening in the game and become the best with Tagtical Hockey</h1>
       <router-link class="btn2" to="/events" tag="button">Events</router-link>
     </div>
   </div>
@@ -157,7 +154,7 @@ export default {
 
 .f2 {
   font-family: "Oxygen", sans-serif;
-  font-size: 24px
+  font-size: 20px
 }
 
 .btn2{

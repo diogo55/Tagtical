@@ -5,11 +5,11 @@ Spyder Editor
 This is a temporary script file.
 """
 import random
-import pymongo 
-from pymongo import MongoClient 
+#import pymongo 
+#from pymongo import MongoClient 
 
-myclient = pymongo.MongoClient("mongodb://localhost:27017/")
-mydb = myclient["games"]
+#myclient = pymongo.MongoClient("mongodb://localhost:27017/")
+#mydb = myclient["games"]
 
 f = open("out.txt",'w')
 
@@ -462,7 +462,7 @@ def teamGen(team, i):
     f.write("] \n")
 
 def main():
-    print(myclient.list_database_names())
+    #print(myclient.list_database_names())
     f.write("{\n \"teamA\": {\n")
     teamA = random.choice(teams)
     teamGen(teamA,0)

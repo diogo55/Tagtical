@@ -3,7 +3,6 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Event from './views/Event.vue'
 import Single from './views/Single.vue'
-import Stuff from './views/Stuff.vue'
 
 Vue.use(Router)
 
@@ -30,11 +29,6 @@ export default new Router({
     {
       path: '/events/:id',
       component: Single
-    },
-    {
-      path: '/stuff',
-      name: 'stuff',
-      component: Stuff
     }
 
   ]
