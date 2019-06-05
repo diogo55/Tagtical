@@ -1,7 +1,11 @@
 <template>
   <ul class="nav nav-pills nav-stacked sidebar">
       <v-card max-width=150>
-      <p align= "center"><b> {{this.gamedata.teamA.name}}</b><button v-on:click="seen1 = !seen1"><b> +</b></button></p>
+      <p align= "center"> 
+        <router-link :to="{ path: '/events/team', params: {team: A,id: gamedata._id} }">
+        <b>{{this.gamedata.teamA.name}}</b>
+        </router-link>
+      <button v-on:click="seen1 = !seen1"><b> +</b></button></p>
         <tr v-for="(player,index) in this.gamedata.teamA.players" :key="index">
             <td v-if="seen1">
               {{gamedata.teamA.players[index].name}} </td>
