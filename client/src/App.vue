@@ -1,42 +1,45 @@
 <template>
   <div id="app">
-    <Header />
-    <router-view/>
+    <v-app>
+      <Header/>
+      <v-content class="colored">
+        <router-view/>
+      </v-content>
+    </v-app>
   </div>
 </template>
 
 <script>
-import Header from './components/layout/Header';
+import Header from "./components/layout/Header";
 export default {
-    name:"app",
-    components: {
-      Header
-    }
-}
-
+  name: "app",
+  components: {
+    Header
+  }
+};
 </script>
 
 
 <style>
-  *{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  body {
-    font-family: Arial, Helvetica, sans-serif;
-    line-height: 1.4;
-    background:  rgba(21, 101, 136, 0.7);
-  }
-  .btn{
-    display: inline-blcok;
-    border: none;
-    background: #555;
-    color: #fff;
-    padding: 7px 20px;
-    cursor: pointer;
-  }
-  .btn:hover {
-    background: #666;
-  }
+
+.colored {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.4;
+  background: rgba(21, 101, 136, 0.7);
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.btn {
+  display: inline-blcok;
+  border: none;
+  background: #555;
+  color: #fff;
+  padding: 7px 20px;
+  cursor: pointer;
+}
+.btn:hover {
+  background: #666;
+}
 </style>

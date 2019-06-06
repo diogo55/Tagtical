@@ -8,11 +8,10 @@ import VueApexCharts from 'vue-apexcharts'
 
 
 Vue.use(VueApexCharts)
-Vue.use(Vuetify)
+Vue.use(Vuetify, {theme:false})
 
 Vue.component('apexchart',VueApexCharts)
 Vue.config.productionTip = false
-
 
 
 

@@ -1,39 +1,58 @@
 <template>
-    <header class="header">
-        <div>
-            <img align="right" src="../../assets/hok1.png" width=70px height=70px>
-            <img align="left" src="../../assets/hok2.png" width=70px height=64px>
-            <h1>Tagtical Hockey</h1>
-        </div>
-        <div id="nav">
-            <router-link to="/">Home</router-link>|
-            <router-link to="/events">Events</router-link>|
-            <router-link to="/about">About</router-link>
-        </div>
-    </header>
+  <nav>
+    <v-toolbar app color="grey">
+      <v-toolbar-side-icon @click="drawer = !drawer"></v-toolbar-side-icon>
+
+      <v-spacer></v-spacer>
+      <img src="../../assets/hok2.png" width="4%">
+      <v-toolbar-title style="font-size:32px;margin-right:20px">
+        <span>Tagtical Hockey</span>
+      </v-toolbar-title>
+      <img src="../../assets/hok1.png" width="4%">
+
+      <v-spacer></v-spacer>
+    </v-toolbar>
+
+    <v-navigation-drawer v-model="drawer" mobile-break-point="10240" app class="grey">
+      <v-list class="pa-0">
+        <v-list-tile>
+          <v-list-tile-action>
+            <v-icon>dashboard</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title style="font-size:20px">Dashboard</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+      </v-list>
+      <v-divider></v-divider>
+
+      <v-list>
+        <v-list-tile v-for="link in links" :key="link.text" router :to="link.route">
+          <v-list-tile-action>
+            <v-icon>{{link.icon}}</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>{{link.text}}</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+      </v-list>
+    </v-navigation-drawer>
+  </nav>
 </template>
 
 <script>
 export default {
-    name: "Header"
-}
+  name: "Header",
+  data() {
+    return {
+      drawer: false,
+      links: [
+        { icon: "home", text: "Home", route: "/" },
+        { icon: "event_note", text: "Events", route: "/events" },
+        { icon: "question_answer", text: "About", route: "/about" }
+      ]
+    };
+  }
+};
 </script>
-
-
-<style scoped>
-
-    .header{
-        position:relative;
-        background: #333;
-        color: #fff;
-        text-align: center;
-        padding: 10px;
-    }
-
-    .header a{
-        color: #fff;
-        padding-right: 5px;
-        text-decoration: none;
-    }
-</style>
 
