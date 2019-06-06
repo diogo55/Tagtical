@@ -1,6 +1,6 @@
 <template>
 <div >
-     <h>{{this.gamedata.name}}: {{this.parte}}</h>
+     <p>{{this.gamedata.name}}: {{this.parte}}</p>
      <apexchart v-if="gamedata" width="500" type="heatmap" :options="chartOptions" :series="series"></apexchart>
    </div>
 </template>

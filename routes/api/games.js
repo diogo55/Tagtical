@@ -24,6 +24,25 @@ router.get('/:id',(req,res) =>{
 });
 
 
+// @route Get api/games/id/teamA/
+// @desc Get specific game
+// @access Public
+router.get('/:id/teamA/',(req,res) =>{
+    Game.findById(req.params.id)
+    .then(games => res.json(games.teamA))
+    .catch(err => res.status(404).json({success: false}));
+});
+
+// @route Get api/games/id/teamB/
+// @desc Get specific game
+// @access Public
+router.get('/:id/teamB/',(req,res) =>{
+    Game.findById(req.params.id)
+    .then(games => res.json(games.teamB))
+    .catch(err => res.status(404).json({success: false}));
+});
+
+
 // @route   POST api/games
 // @desc    Create an Game
 // @access  Public
