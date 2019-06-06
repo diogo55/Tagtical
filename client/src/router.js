@@ -4,6 +4,7 @@ import Home from './views/Home.vue'
 import Event from './views/Event.vue'
 import Single from './views/Single.vue'
 import Team from './views/Team.vue'
+import Player from './views/Player.vue'
 
 Vue.use(Router)
 
@@ -32,9 +33,14 @@ export default new Router({
       component: Single,
       children: [
         {
-          path: '/team',
+          path: '/team/:team',
           name: 'team',
-          component: Team
+          component: Team,
+        },
+        {
+          path: '/player/:team/:n',
+          name: 'player',
+          component: Player
         }
       ]
     }

@@ -1,7 +1,7 @@
 <template>
   <div>
     <Sidebar v-bind:gamedata="gamedata"/>
-   <router-view></router-view>
+   <router-view :key="$route.fullPath"></router-view>
    </div>
 </template>
 

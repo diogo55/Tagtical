@@ -10,7 +10,11 @@
         </button>
       </p>
       <tr v-for="(player,index) in this.gamedata.teamA.players" :key="index">
-        <td v-if="seen1">{{gamedata.teamA.players[index].name}}</td>
+        <td v-if="seen1">
+          <router-link :to="{ name: 'player', params: {id: gamedata._id,team: 'A',n: index} }">
+            {{gamedata.teamA.players[index].name}}
+          </router-link>
+        </td>
       </tr>
     </v-card>
 
@@ -24,7 +28,11 @@
         </button>
       </p>
       <tr v-for="(player,index) in this.gamedata.teamB.players" :key="index">
-        <td v-if="seen2">{{gamedata.teamB.players[index].name}}</td>
+        <td v-if="seen2">
+          <router-link :to="{ name: 'player', params: {id: gamedata._id,team: 'B',n: index} }">
+          {{gamedata.teamB.players[index].name}}
+        </router-link>
+        </td>
       </tr>
     </v-card>
   </ul>
