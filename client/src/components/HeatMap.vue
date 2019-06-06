@@ -114,10 +114,8 @@ export default {
                 }        
         else {
           for(var i = 0; i < this.gamedata.players.length;i++ )
-            for(var j = 61; j <= 120;j++) {
+            for(var j = 61; j <= 120;j++) 
                 this.teamdata[this.getPos(this.gamedata.players[i].pos[j].posY)][this.getPos(this.gamedata.players[i].pos[j].posX)]++;
-                console.log("pos",this.gamedata.players[i].pos[j].posX)
-                console.log("getpos",this.getPos(this.gamedata.players[i].pos[j].posX))}
         }
 
       },

@@ -29,13 +29,16 @@ export default new Router({
     },
     {
       path: '/events/:id',
-      component: Single
-    },
-    {
-      path: '/events/team',
-      name: 'team',
-      component: Team
+      component: Single,
+      children: [
+        {
+          path: '/team',
+          name: 'team',
+          component: Team
+        }
+      ]
     }
+    
   
   ]
 })

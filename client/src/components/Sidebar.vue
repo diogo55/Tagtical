@@ -2,7 +2,7 @@
   <ul class="nav nav-pills nav-stacked sidebar">
     <v-card max-width="150">
       <p align="center">
-        <router-link :to="{ path: '/events/team', params: {team: 'A',id: gamedata._id} }">
+        <router-link :to="{ name: 'team', params: {id: gamedata._id,team: 'A'} }">
           <b>{{this.gamedata.teamA.name}}</b>
         </router-link>
         <button v-on:click="seen1 = !seen1">
@@ -16,7 +16,9 @@
 
     <v-card max-width="150">
       <p align="center">
-        <b>{{this.gamedata.teamB.name}}</b>
+        <router-link :to="{ name: 'team', params: {id: gamedata._id,team: 'B'} }">
+          <b>{{this.gamedata.teamB.name}}</b>
+        </router-link>
         <button v-on:click="seen2 = !seen2">
           <b>+</b>
         </button>
