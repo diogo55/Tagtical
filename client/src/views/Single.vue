@@ -93,6 +93,7 @@
         </v-list>
       </v-navigation-drawer>
     </div>
+    <h1 align="center" class="fonte">{{gamedata.teamA.name}} vs {{gamedata.teamB.name}}</h1>
     <router-view :key="$route.fullPath"></router-view>
   </div>
 </template>
@@ -151,3 +152,9 @@ export default {
 };
 </script>
 
+<style scope>
+.fonte {
+  font-family: "Oxygen", sans-serif;
+  font-size: 45px;
+}
+</style>
