@@ -75,6 +75,7 @@
         </v-list>
       </v-navigation-drawer>
     </div>
+        <router-view :key="$route.fullPath"></router-view>
   </div>
 </template>
 
