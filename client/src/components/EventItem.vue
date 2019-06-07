@@ -6,7 +6,7 @@
             </v-list-tile-action>
             <v-list-tile-content>
               <v-list-tile-title>
-                {{event.teamA.name + ' vs ' + event.teamB.name + '\n'}}
+                {{event.teamA.name + ' vs ' + event.teamB.name}}
                 
               </v-list-tile-title>
               <v-subheader style="padding-left:0px;">
