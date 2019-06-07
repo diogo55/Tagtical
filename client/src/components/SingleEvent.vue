@@ -28,6 +28,12 @@
             <td align="center"> 
               {{gamedata.players[index].data.dist}} </td>
           </tr>
+          <tr>
+            <td align="center"><b> TOTAL</b></td>
+            <td align="center"><b>{{this.velMax()}}</b></td>
+            <td align="center"><b>{{this.velMedia()}}</b></td>
+            <td align="center"><b>{{this.distTotal()}}</b></td>
+          </tr>
         </table>
       </v-card-text>
       </v-card>
@@ -41,9 +47,32 @@
 export default {
   name: "SingleEvent",
   props: ["gamedata"],
-
-  watch: { gamedata(){ 
-      return this.gamedata} } 
+  methods: {
+    distTotal(){
+      var distancia=0;
+      for(var i = 0; i < this.gamedata.players.length;i++) 
+        distancia+= this.gamedata.players[i].data.dist;
+      return distancia.toFixed(2);
+    },
+    velMedia(){
+      var media=0;
+      for(var i = 0; i < this.gamedata.players.length;i++) 
+        media+= this.gamedata.players[i].data.vel_media;
+      return (media/this.gamedata.players.length).toFixed(2);
+    },
+    velMax(){
+      var max=0;
+      for(var i = 0; i < this.gamedata.players.length;i++) 
+        if(this.gamedata.players[i].data.vel_max>max) 
+          max = this.gamedata.players[i].data.vel_max;
+      return max;
+    }
+  },
+  watch: { 
+    gamedata(){ 
+      return this.gamedata;
+      } 
+    } 
 
 };
 

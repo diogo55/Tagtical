@@ -10,12 +10,13 @@
         <HeatMapPlayer v-bind:gamedata="player" parte='Segunda Parte'/>
       </v-flex>
     </v-layout>
+    <SinglePlayer align="center" v-bind:player="player"/>
   </div>
 </template>
 
 
 <script>
-import SingleEvent from "../components/SingleEvent";
+import SinglePlayer from "../components/SinglePlayer";
 import HeatMapPlayer from "../components/HeatMapPlayer";
 import axios from 'axios';
 import Sidebar from "../components/Sidebar";
@@ -23,7 +24,7 @@ import Sidebar from "../components/Sidebar";
 export default {
   name: "Team",
   components: {
-    SingleEvent,
+    SinglePlayer,
     HeatMapPlayer
   },
   data(){
