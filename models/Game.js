@@ -25,8 +25,8 @@ const PositionSchema = new Schema({
 //schema de um jogador
 const PlayerSchema = new Schema ({
     name: String,
-    data: DataSchema,
-    pos: [PositionSchema]
+    pos: [PositionSchema],
+    data: DataSchema
     
 });
 

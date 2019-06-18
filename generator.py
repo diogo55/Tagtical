@@ -5,11 +5,8 @@ Spyder Editor
 This is a temporary script file.
 """
 import random
-#import pymongo 
-#from pymongo import MongoClient 
+from math import sqrt
 
-#myclient = pymongo.MongoClient("mongodb://localhost:27017/")
-#mydb = myclient["games"]
 
 f = open("out.txt",'w')
 
@@ -367,6 +364,10 @@ listaNomes = ["Aarao","Abdenago","Abdul","Abel","Abelamio","Abelardo","Abigail"
   ,"Zola","Zora","Zoraida","Zubaida","Zubeida","Zulaia","Zuleica","Zulmira"
   ]
 
+dist=0
+vmax = 0
+posAnt=(0,0)
+
 def posInicial(a):
     if a == 0:
         return (round(random.uniform(0,22), 2),round(random.uniform(0,22), 2))
@@ -394,64 +395,95 @@ def incrPosGK(a):
     
 def posGen(a):
     i = 0
-    t = 25*60
+    t = 1*60
+    global dist
+    dist=0
+    global vmax
+    vmax=0
     pos = posInicial(a)
+    posAnt = pos
     while i < t:
-        f.write("{\"posX\":"+str(pos[0])+",\"posY\": "+str(pos[1])+",\"time\":"+str(i)+"},\n")
-        i+=0.5
+        f.write("{\"posX\":"+str(pos[0])+",\"posY\": "+str(pos[1])+",\"time\":\""+str(i)+"\"},\n")
+        i+=1
         pos=incrPos(pos)
+        d=sqrt((posAnt[0] - pos[0])**2 + (posAnt[1] - pos[1])**2)
+        dist+=round(d,2)
+        if d > vmax: vmax=round(d,2)
+        posAnt=pos
     if a == 0:
         a=1
     else:
         a=0
+    pos = posInicial(a)
+    posAnt = pos
     while i< t*2:
-        f.write("{\"posX\":"+str(pos[0])+",\"posY\": "+str(pos[1])+",\"time\":"+str(i)+"},\n")
-        i+=0.5
+        f.write("{\"posX\":"+str(pos[0])+",\"posY\": "+str(pos[1])+",\"time\":\""+str(i)+"\"},\n")
+        i+=1
         pos=incrPos(pos)
-    f.write("{\"posX\":"+str(pos[0])+",\"posY\": "+str(pos[1])+",\"time\":"+str(i)+"}\n")
-    pos=incrPos(pos)
+        d=sqrt((posAnt[0] - pos[0])**2 + (posAnt[1] - pos[1])**2)
+        dist+=round(d,2)
+        if d > vmax: vmax=round(d,2)
+        posAnt=pos
+    f.write("{\"posX\":"+str(pos[0])+",\"posY\": "+str(pos[1])+",\"time\":\""+str(i)+"\"}\n")
+    
 
 def posGenGK(a):
     i = 0
-    t = 25*60
+    t = 1*60
+    global dist
+    dist=0
+    global vmax
+    vmax=0
     pos = posGK(a)
+    posAnt = pos
     while i <= t:
-        f.write("{\"posX\":"+str(pos[0])+",\"posY\": "+str(pos[1])+",\"time\":"+str(i)+"},\n")
-        i+=0.5
+        f.write("{\"posX\":"+str(pos[0])+",\"posY\": "+str(pos[1])+",\"time\":\""+str(i)+"\"},\n")
+        i+=1
         pos=incrPosGK(pos)
+        d=sqrt((posAnt[0] - pos[0])**2 + (posAnt[1] - pos[1])**2)
+        dist+=round(d,2)
+        if d > vmax: vmax=round(d,2)
+        posAnt=pos
     if a == 0:
         a=1
     else:
         a=0
+    pos = posGK(a)
+    posAnt=pos
     while i < t*2:
-        f.write("{\"posX\":"+str(pos[0])+",\"posY\": "+str(pos[1])+",\"time\":"+str(i)+"},\n")
-        i+=0.5
+        f.write("{\"posX\":"+str(pos[0])+",\"posY\": "+str(pos[1])+",\"time\": \""+str(i)+"\"},\n")
+        i+=1
         pos=incrPosGK(pos)
-    f.write("{\"posX\":"+str(pos[0])+",\"posY\": "+str(pos[1])+",\"time\":"+str(i)+"}\n")
-    pos=incrPosGK(pos)
-
+        d=sqrt((posAnt[0] - pos[0])**2 + (posAnt[1] - pos[1])**2)
+        dist+=round(d,2)
+        if d > vmax: vmax=round(d,2)
+        posAnt=pos
+    f.write("{\"posX\":"+str(pos[0])+",\"posY\": "+str(pos[1])+",\"time\":\""+str(i)+"\"}\n")
 
 def infoGen(a):
-    f.write(" \"dist\":" +str(round(random.uniform(5,10), 2))+",\n")
-    f.write("\"vel_media\":" + str(round(random.uniform(3,8),2))+",\n")
-    f.write("\"vel_max\":" + str(round(random.uniform(5, 15),2))+"\n")
+    global dist
+    global vmax
+    vm = round(dist/120,2)
+    f.write(" \"dist\": " + str(dist)+",\n")
+    f.write("\"vel_media\": " + str(vm)+",\n")
+    f.write("\"vel_max\": " + str(vmax)+"\n")
 
     
 def playerGen(a):
     f.write("{\n \"name\": \""+random.choice(listaNomes)+" "+ random.choice(listaApelidos)+"\", \n")
-    f.write("\"data\":{\n")
+    f.write("\"pos\":[\n")
+    posGen(a)    
+    f.write("],\n \"data\": { \n")
     infoGen(a)
-    f.write("},\n \"pos\": [ \n")
-    posGen(a)
-    f.write("] }")
+    f.write("} }")
 
 def gkGen(a):
     f.write("{\n \"name\": \""+random.choice(listaNomes)+" "+ random.choice(listaApelidos)+"\", \n")
-    f.write("\"data\":{\n")
+    f.write("\"pos\":[\n")
+    posGenGK(a)    
+    f.write("],\n \"data\": { \n")
     infoGen(a)
-    f.write("},\n \"pos\": [ \n")
-    posGenGK(a)
-    f.write("] }")
+    f.write("} }")
 
 def teamGen(team, i):
     f.write("\"name\": \""+team +"\",\n \"players\": [\n")
