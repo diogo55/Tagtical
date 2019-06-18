@@ -7,9 +7,9 @@
       <v-card-text>
         <table style="width:100%; height:40%" border="1" >
           <tr>
-            <th>Velocidade Máxima</th>
-            <th>Velocidade Média</th>
-            <th>Distância</th>
+            <th>Velocidade Máxima (m/s)</th>
+            <th>Velocidade Média (m/s)</th>
+            <th>Distância (m)</th>
           </tr>
           <tr>
             <td align="center">

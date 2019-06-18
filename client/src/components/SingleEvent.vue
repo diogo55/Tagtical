@@ -14,9 +14,9 @@
         <table style="width:100%; height:40%" border="1" >
           <tr>
             <th>{{gamedata.name}}</th>
-            <th>Velocidade Máxima</th>
-            <th>Velocidade Média</th>
-            <th>Distância</th>
+            <th>Velocidade Máxima (m/s)</th>
+            <th>Velocidade Média (m/s)</th>
+            <th>Distância (m)</th>
           </tr>
           <tr v-for="(player,index) in this.gamedata.players" :key="index">
             <td align="center">
