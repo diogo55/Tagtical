@@ -1,6 +1,6 @@
 <template>
   <nav>
-    <v-toolbar app color="grey">
+    <v-toolbar app color="rgb(118, 191, 164)">
       <v-toolbar-side-icon @click="drawer = !drawer"></v-toolbar-side-icon>
 
       <v-spacer></v-spacer>
@@ -13,7 +13,7 @@
       <v-spacer></v-spacer>
     </v-toolbar>
 
-    <v-navigation-drawer v-model="drawer" mobile-break-point="10240" app class="grey">
+    <v-navigation-drawer v-model="drawer" mobile-break-point="10240" app style="background:rgb(228, 245, 239)">
       <v-list class="pa-0">
         <v-list-tile>
           <v-list-tile-action>
@@ -55,4 +55,11 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+  .let{
+    color:white
+  }
+</style>
+
 

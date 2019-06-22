@@ -14,8 +14,8 @@
       </v-flex>
     </v-layout>
   </v-container>
-    <SingleEvent v-if="this.$route.params.team=='A'" v-bind:gamedata="team" v-on:view-game="viewGame"/>
-    <SingleEvent v-else v-bind:gamedata="team" v-on:view-game="viewGame"/>
+    <SingleEvent v-if="this.$route.params.team=='A'" v-bind:gamedata="team" v-on:go-game="goGame"/>
+    <SingleEvent v-else v-bind:gamedata="team" v-on:go-game="goGame"/>
   </div>
 </template>
 

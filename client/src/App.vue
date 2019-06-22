@@ -17,6 +17,8 @@ export default {
     Header
   }
 };
+
+//background: rgba(21, 101, 136, 0.7);
 </script>
 
 
@@ -25,7 +27,7 @@ export default {
 .colored {
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.4;
-  background: rgba(21, 101, 136, 0.7);
+  background: #c8ebdf;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -34,12 +36,12 @@ export default {
 .btn {
   display: inline-blcok;
   border: none;
-  background: #555;
+  background: #379683;
   color: #fff;
   padding: 7px 20px;
   cursor: pointer;
 }
 .btn:hover {
-  background: #666;
+  background: #d35f3b;
 }
 </style>

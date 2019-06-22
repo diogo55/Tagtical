@@ -10,7 +10,7 @@
         </v-list>
       </v-navigation-drawer>
 
-      <v-btn icon @click.stop="drawer2 = !drawer">
+      <v-btn icon @click.stop="drawer2 = !drawer2">
         <v-icon>group</v-icon>
       </v-btn>
       <v-navigation-drawer v-model="drawer2" mobile-break-point="10240" app class="grey">
@@ -93,8 +93,8 @@
         </v-list>
       </v-navigation-drawer>
     </div>
-    <h1 align="center" class="fonte">{{gamedata.teamA.name}} vs {{gamedata.teamB.name}}</h1>
     <router-view :key="$route.fullPath"></router-view>
+    <h1 align="center" class="fonte">{{gamedata.teamA.name}} vs {{gamedata.teamB.name}}</h1>
   </div>
 </template>
 

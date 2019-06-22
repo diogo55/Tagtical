@@ -29,7 +29,7 @@
             max-height="465px"
             elevation="10"
             class="text-xs-center ma-3"
-            color="rgba(21, 150, 146,0.5)"
+            color="rgba(151, 201, 182,0.8)"
           >
             <v-card-text style="font-family:Pacifico,cursive;font-size:35px">Coaches</v-card-text>
             <v-responsive>
@@ -46,7 +46,7 @@
             max-height="465px"
             elevation="10"
             class="text-xs-center ma-3"
-            color="rgba(21, 150, 146,0.5)"
+            color="rgba(151, 201, 182,0.8)"
           >
             <v-card-text style="font-family:Pacifico,cursive;font-size:35px">Scouts</v-card-text>
             <v-responsive>
@@ -64,7 +64,7 @@
             max-height="465px"
             elevation="10"
             class="text-xs-center ma-3"
-            color="rgba(21, 150, 146,0.5)"
+            color="rgba(151, 201, 182,0.8)"
           >
             <v-card-text style="font-family:Pacifico,cursive;font-size:35px">Fans</v-card-text>
             <v-responsive>
@@ -134,7 +134,7 @@ export default {
     };
   }
 };
-
+//color="rgba(21, 150, 146,0.5)"
 // v-card old color rgb(21, 101, 146,0.5)
 </script>
 
@@ -160,12 +160,12 @@ export default {
 .btn2{
     display: inline-blcok;
     border: none;
-    background: rgb(9, 118, 161);
+    background: rgba(118, 191, 164,0.9);
     padding: 7px 20px;
     cursor: pointer;
   }
   .btn2:hover {
-    background: rgb(7, 82, 112);
+    background: rgba(118, 191, 164,0.5);
   }
 
 .fonte {
@@ -176,7 +176,7 @@ export default {
 .overlay {
   width: 100%;
   height: 100%;
-  background: rgba(21, 101, 136, 0.7);
+  background: rgba(173, 225, 205,0.7)
 }
 
 .contain {
