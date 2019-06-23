@@ -14,8 +14,8 @@
       </v-flex>
     </v-layout>
   </v-container>
-    <SingleEvent v-if="this.$route.params.team=='A'" v-bind:gamedata="team" v-on:go-game="goGame"/>
-    <SingleEvent v-else v-bind:gamedata="team" v-on:go-game="goGame"/>
+    <SingleEvent v-if="this.$route.params.team=='A'" v-bind:gamedata="team" v-on:view-game="viewGame"/>
+    <SingleEvent v-else v-bind:gamedata="team" v-on:view-game="viewGame"/>
   </div>
 </template>
 
@@ -37,6 +37,12 @@ export default {
       team: []
     }
   },
+  methods: {
+    viewGame(id) {
+      window.open("http://localhost:5000/files/" + id + "/sh.html");
+    }
+  },
+  
   created(){
     var id = this.$route.params.id;
     var t;
