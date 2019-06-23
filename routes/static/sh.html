@@ -33,8 +33,13 @@
 		let pos4B;
 		let pos5B;
 		let i = 0;
-		let j = 5;
-		let a = 0;
+		var t;
+		var t1;
+
+		let counter = 0;
+		let startTime= 0;
+		let maxTime = 6000;
+		
 
 
 		function preload() {
@@ -47,6 +52,10 @@
 
 
 		function setup() {
+
+			t = 1;
+			t1 = 0;
+
 
 			console.log(jsonfile.teamA.name);
 			createCanvas(640, 360);
@@ -61,88 +70,151 @@
 			pos4B = jsonfile.teamB.players[3].pos;
 			pos5B = jsonfile.teamB.players[4].pos;
 
+			pos1A.x = ((pos1A[i].posX*640)/44);
+			pos1A.y = (360-(pos1A[i].posY*360)/22);
+			pos2A.x = ((pos2A[i].posX*640)/44);
+			pos2A.y = (360-(pos2A[i].posY*360)/22);
+			pos3A.x = ((pos3A[i].posX*640)/44);
+			pos3A.y = (360-(pos3A[i].posY*360)/22);
+			pos4A.x = ((pos4A[i].posX*640)/44);
+			pos4A.y = (360-(pos4A[i].posY*360)/22);
+			pos5A.x = ((pos5A[i].posX*640)/44);
+			pos5A.y = (360-(pos5A[i].posY*360)/22);
+
+			pos1B.x = ((pos1B[i].posX*640)/44);
+			pos1B.y = (360-(pos1B[i].posY*360)/22);
+			pos2B.x = ((pos2B[i].posX*640)/44);
+			pos2B.y = (360-(pos2B[i].posY*360)/22);
+			pos3B.x = ((pos3B[i].posX*640)/44);
+			pos3B.y = (360-(pos3B[i].posY*360)/22);
+			pos4B.x = ((pos4B[i].posX*640)/44);
+			pos4B.y = (360-(pos4B[i].posY*360)/22);
+			pos5B.x = ((pos5B[i].posX*640)/44);
+			pos5B.y = (360-(pos5B[i].posY*360)/22);
+			
+
 		}
 
 		function draw() {
 			background(bg);
-			//ellipse(x, y, r * 2, r * 2);
 
+
+		
+			fill(244,3,3);
+			noStroke();
+			rect(20,330,map(counter-startTime,0,maxTime,0,600),19);
+			noFill();
+			stroke(0);
+			rect(20,330,600,20);
+
+			startTime = -t;
 
 			fill(color(0, 128, 0));
-			ellipse(50, 180, 20, 20);
-			//ellipse(300,180,20,20);
-			//ellipse(300,180,20,20);
-			//ellipse(50,180,20,20);
-			//ellipse(50,180,20,20);
-
-			ellipse(pos2A[i].posX +200 , pos2A[i].posY +200, 20, 20);
-
-			ellipse(pos3A[i].posX +100, pos3A[i].posY + 100, 20, 20);
-
-			ellipse(pos4A[i].posX +200, pos4A[i].posY + 300, 20, 20);
-
-			ellipse(pos5A[i].posX +200, pos5A[i].posY + 100, 20, 20);
+			//ellipse(50, 180, 20, 20);
 
 
+			if(int(t-t1)==1){
+				t1+=1;
+				
+				if (i < 5999) {
+					i++;
+				}
+				pos1A.x = ((pos1A[i].posX*640)/44);
+				pos1A.y = (360-(pos1A[i].posY*360)/22);
+				pos2A.x = ((pos2A[i].posX*640)/44);
+				pos2A.y = (360-(pos2A[i].posY*360)/22);
+				pos3A.x = ((pos3A[i].posX*640)/44);
+				pos3A.y = (360-(pos3A[i].posY*360)/22);
+				pos4A.x = ((pos4A[i].posX*640)/44);
+				pos4A.y = (360-(pos4A[i].posY*360)/22);
+				pos5A.x = ((pos5A[i].posX*640)/44);
+				pos5A.y = (360-(pos5A[i].posY*360)/22);
 
-
-			fill(color(255, 204, 0));
-			ellipse(588, 180, 20, 20);
-			//ellipse(340, 180, 20, 20);
-			//ellipse(588, 180, 20, 20);
-			//ellipse(588, 180, 20, 20);
-			//ellipse(588, 180, 20, 20);
-
-			ellipse(pos1B[i].posX + 200, pos1B[i].posY + 150, 20, 20);
-
-			ellipse(pos2B[i].posX + 100, pos2B[i].posY + 150, 20, 20);
-
-			ellipse(pos3B[i].posX + 150, pos3B[i].posY + 250, 20, 20);
-
-			ellipse(pos4B[i].posX + 150, pos4B[i].posY + 200, 20, 20);
-
-			ellipse(pos5B[i].posX + 100, pos5B[i].posY + 250, 20, 20);
-
-
-
-			//a = pos2A[i].posX - pos2A[i+1].posX;
-			//b = pos2A[i].posY - pos2A[i+1].posY;
-
-
-			//a = pos1A[i+4].posX - pos1A[i+5].posX;
-			//b = pos1A[i+4].posY - pos1A[i+5].posY;
-
-			//x += a*10;
-
-			//y += b*10;
-
-
-
-
-
-
-
-			if (i < 5999) {
-				i++;
-				j += 10;
-			} else {
-				i = 0;
-				j = 0;
+				pos1B.x = ((pos1B[i].posX*640)/44);
+				pos1B.y = (360-(pos1B[i].posY*360)/22);
+				pos2B.x = ((pos2B[i].posX*640)/44);
+				pos2B.y = (360-(pos2B[i].posY*360)/22);
+				pos3B.x = ((pos3B[i].posX*640)/44);
+				pos3B.y = (360-(pos3B[i].posY*360)/22);
+				pos4B.x = ((pos4B[i].posX*640)/44);
+				pos4B.y = (360-(pos4B[i].posY*360)/22);
+				pos5B.x = ((pos5B[i].posX*640)/44);
+				pos5B.y = (360-(pos5B[i].posY*360)/22);
 			}
+			
+
+			t+=0.039
 
 
-			//x += xspeed;
-			//y += yspeed;
-			//if (x > width - r || x < r) {
-			//	xspeed = -xspeed;
-			//}
-			//if (y > height - r || y < r) {
-			//	yspeed = -yspeed;
-			//}
+			ellipse(pos1A.x, pos1A.y, 20, 20);
+			ellipse(pos2A.x, pos2A.y, 20, 20);
+			ellipse(pos3A.x, pos3A.y, 20, 20);
+			ellipse(pos4A.x, pos4A.y, 20, 20);
+			ellipse(pos5A.x, pos5A.y, 20, 20);
+
+
+			fill(color(200, 200, 0));
+			
+			ellipse(pos1B.x, pos1B.y, 20, 20);
+			ellipse(pos2B.x, pos2B.y, 20, 20);
+			ellipse(pos3B.x, pos3B.y, 20, 20);
+			ellipse(pos4B.x, pos4B.y, 20, 20);
+			ellipse(pos5B.x, pos5B.y, 20, 20);
+
+
+
+			pos1A.x += (((pos1A[i+1].posX * 640)/44)-pos1A.x)*0.17;
+			pos1A.y += ((360-(pos1A[i+1].posY * 360)/22)-pos1A.y)*0.17;
+			pos2A.x += (((pos2A[i+1].posX * 640)/44)-pos2A.x)*0.17;
+			pos2A.y += ((360-(pos2A[i+1].posY * 360)/22)-pos2A.y)*0.17;
+			pos3A.x += (((pos3A[i+1].posX * 640)/44)-pos3A.x)*0.17;
+			pos3A.y += ((360-(pos3A[i+1].posY * 360)/22)-pos3A.y)*0.17;
+			pos4A.x += (((pos4A[i+1].posX * 640)/44)-pos4A.x)*0.17;
+			pos4A.y += ((360-(pos4A[i+1].posY * 360)/22)-pos4A.y)*0.17;
+			pos5A.x += (((pos5A[i+1].posX * 640)/44)-pos5A.x)*0.17;
+			pos5A.y += ((360-(pos5A[i+1].posY * 360)/22)-pos5A.y)*0.17;
+
+			pos1B.x += (((pos1B[i+1].posX * 640)/44)-pos1B.x)*0.17;
+			pos1B.y += ((360-(pos1B[i+1].posY * 360)/22)-pos1B.y)*0.17;
+			pos2B.x += (((pos2B[i+1].posX * 640)/44)-pos2B.x)*0.17;
+			pos2B.y += ((360-(pos2B[i+1].posY * 360)/22)-pos2B.y)*0.17;
+			pos3B.x += (((pos3B[i+1].posX * 640)/44)-pos3B.x)*0.17;
+			pos3B.y += ((360-(pos3B[i+1].posY * 360)/22)-pos3B.y)*0.17;
+			pos4B.x += (((pos4B[i+1].posX * 640)/44)-pos4B.x)*0.17;
+			pos4B.y += ((360-(pos4B[i+1].posY * 360)/22)-pos4B.y)*0.17;
+			pos5B.x += (((pos5B[i+1].posX * 640)/44)-pos5B.x)*0.17;
+			pos5B.y += ((360-(pos5B[i+1].posY * 360)/22)-pos5B.y)*0.17;
+			
+
+
+		}
+
+		function keyPressed(){
+			if(key == 'p')
+				noLoop();
+			if(key == 'r')
+				loop();
+			if(key == 's')
+				redraw();
 		}
 	</script>
 
 </body>
 
 
+
 </html>
+<style>
+	canvas{
+		padding:0;
+		margin: auto;
+		display: block;
+		width: 640px;
+		height: 360px;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+	}
+</style>
