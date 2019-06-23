@@ -6,6 +6,10 @@
         <router-view/>
       </v-content>
     </v-app>
+    <v-footer class="pa-3" color="#c8ebdf">
+      <v-spacer></v-spacer>
+      <div> BitBear &copy; {{ new Date().getFullYear() }}</div>
+  </v-footer>
   </div>
 </template>
 
