@@ -14,7 +14,7 @@
       <v-btn icon @click.stop="drawer2 = !drawer2">
         <v-icon>group</v-icon>
       </v-btn>
-      <v-navigation-drawer v-model="drawer2" mobile-break-point="10240" app class="grey">
+      <v-navigation-drawer v-model="drawer2" mobile-break-point="10240" app style="background:rgb(228, 245, 239)">
         <v-list>
           <v-list-tile>
             <v-list-tile-action>

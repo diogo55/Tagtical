@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="background:rgb(228, 245, 239)">
     <v-list class="pa-0">
       <v-list-tile>
         <v-list-tile-action>
