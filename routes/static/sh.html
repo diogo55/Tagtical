@@ -182,10 +182,6 @@
 				
 				pos2A.x = ((pos2A[i].posX*640)/44);
 				pos2A.y = (360-(pos2A[i].posY*360)/22);
-				
-				
-				
-				
 				pos3A.x = ((pos3A[i].posX*640)/44);
 				pos3A.y = (360-(pos3A[i].posY*360)/22);
 				pos4A.x = ((pos4A[i].posX*640)/44);
@@ -280,31 +276,76 @@
 				angle3 = atan2(pos4A.x - center.x, pos4A.y - center.y);
 				angle4 = atan2(pos5A.x - center.x, pos5A.y - center.y);
 
+				var vert = [
+					{ "posX": pos2A.x, "posY": pos2A.y, "angle": angle},
+					{ "posX": pos3A.x, "posY": pos3A.y, "angle": angle2},
+					{ "posX": pos4A.x, "posY": pos4A.y, "angle": angle3},
+					{ "posX": pos5A.x, "posY": pos5A.y, "angle": angle4},
+				]
 				
-				var angles = [angle,angle2,angle3,angle4];
 
-				console.log(angles);
-				angles.sort(compararNumeros);
-				console.log(angles);
+				vert = sortByKey(vert, 'angle');
 		
 
 				fill(255,0,0,128);
-				
+				beginShape();
+					vertex(vert[0].posX,vert[0].posY);
+					vertex(vert[1].posX,vert[1].posY);
+					vertex(vert[2].posX,vert[2].posY);
+					vertex(vert[3].posX,vert[3].posY);
+				endShape(CLOSE);
+				/*
 				beginShape();
 					vertex(pos2A.x,pos2A.y);
 					vertex(pos3A.x,pos3A.y);
 					vertex(pos4A.x,pos4A.y);
 					vertex(pos5A.x,pos5A.y);
 				endShape(CLOSE);
+				*/
 			}	
+
 			if(flag2){
+			
+
+				var x = (pos2B.x + pos3B.x + pos4B.x + pos5B.x)/4;
+				var y = (pos2B.y + pos3B.y + pos4B.y + pos5B.y)/4;
+				
+				var center = {
+					"x": x,
+					"y": y,
+				};
+				
+				angle = atan2(pos2B.x - center.x, pos2B.y - center.y);
+				angle2 = atan2(pos3B.x - center.x, pos3B.y - center.y);
+				angle3 = atan2(pos4B.x - center.x, pos4B.y - center.y);
+				angle4 = atan2(pos5B.x - center.x, pos5B.y - center.y);
+
+				var vert = [
+					{ "posX": pos2B.x, "posY": pos2B.y, "angle": angle},
+					{ "posX": pos3B.x, "posY": pos3B.y, "angle": angle2},
+					{ "posX": pos4B.x, "posY": pos4B.y, "angle": angle3},
+					{ "posX": pos5B.x, "posY": pos5B.y, "angle": angle4},
+				]
+				
+
+				vert = sortByKey(vert, 'angle');
+
 				fill(0,0,255,128);
+				beginShape();
+					vertex(vert[0].posX,vert[0].posY);
+					vertex(vert[1].posX,vert[1].posY);
+					vertex(vert[2].posX,vert[2].posY);
+					vertex(vert[3].posX,vert[3].posY);
+				endShape(CLOSE);
+
+				/*
 				beginShape();
 					vertex(pos2B.x,pos2B.y);
 					vertex(pos3B.x,pos3B.y);
 					vertex(pos4B.x,pos4B.y);
 					vertex(pos5B.x,pos5B.y);
 				endShape(CLOSE);
+				*/
 			}				
 
 		}
@@ -312,6 +353,15 @@
 		//function compararNumeros(a, b) {
   		//	return a - b;
 	//	}
+
+
+		function sortByKey(array, key) {
+			return array.sort(function(a, b) {
+    			var x = a[key]; var y = b[key];
+   				 return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+			});
+		}
+
 
 		function keyPressed(){
 			if(key == 'p')
