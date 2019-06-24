@@ -3,7 +3,7 @@
     <v-btn icon @click.stop="drawer = !drawer">
       <v-icon>event</v-icon>
     </v-btn>
-    <v-navigation-drawer v-model="drawer" mobile-break-point="10240" app class="grey">
+    <v-navigation-drawer v-model="drawer" mobile-break-point="10240" app style="background:rgb(228, 245, 239)">
       <v-list>
         <Events v-bind:events="events" v-on:go-game="goGame"/>
       </v-list>
