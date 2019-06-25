@@ -33,12 +33,12 @@ export default new Router({
       component: Single,
       children: [
         {
-          path: '/team/:team',
+          path: ':id/team/:team',
           name: 'team',
           component: Team,
         },
         {
-          path: '/player/:team/:n',
+          path: ':id/player/:team/:n',
           name: 'player',
           component: Player
         }
