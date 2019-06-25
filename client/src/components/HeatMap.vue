@@ -71,7 +71,6 @@ export default {
                       },
                       {
                         from:45,
-                        to: 60,
                         color: '#ff2a00',
                         name: 'high',
                       }
@@ -107,7 +106,7 @@ export default {
     },
     methods: {
       getData: function() {
-        if (this.parte=="Primeira Parte") {
+        if (this.parte=="First Half") {
           for(var i = 0; i < this.gamedata.players.length;i++ )
             for(var j = 0; j <= 1200;j++)
                 this.teamdata[this.getPos(this.gamedata.players[i].pos[j].posY)][this.getPos(this.gamedata.players[i].pos[j].posX)]++;        

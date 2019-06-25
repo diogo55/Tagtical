@@ -395,7 +395,7 @@ def incrPosGK(a):
     
 def posGen(a):
     i = 0
-    t = 1*60
+    t = 20*60
     global dist
     dist=0
     global vmax
@@ -429,7 +429,7 @@ def posGen(a):
 
 def posGenGK(a):
     i = 0
-    t = 1*60
+    t = 20*60
     global dist
     dist=0
     global vmax

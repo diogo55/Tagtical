@@ -37,12 +37,12 @@
               <v-list-tile-action>
                 <v-icon>event</v-icon>
               </v-list-tile-action>
-              <v-list-tile-title>Geral</v-list-tile-title>
+              <v-list-tile-title>Team</v-list-tile-title>
             </v-list-tile>
             <v-list-group prepend-icon="group" no-action sub-group value="true">
               <template v-slot:activator>
                 <v-list-tile>
-                  <v-list-tile-title>Jogadores</v-list-tile-title>
+                  <v-list-tile-title>Players</v-list-tile-title>
                 </v-list-tile>
               </template>
 
@@ -69,12 +69,12 @@
               <v-list-tile-action>
                 <v-icon>event</v-icon>
               </v-list-tile-action>
-              <v-list-tile-title>Geral</v-list-tile-title>
+              <v-list-tile-title>Team</v-list-tile-title>
             </v-list-tile>
             <v-list-group prepend-icon="group" no-action sub-group value="true">
               <template v-slot:activator>
                 <v-list-tile>
-                  <v-list-tile-title>Jogadores</v-list-tile-title>
+                  <v-list-tile-title>Players</v-list-tile-title>
                 </v-list-tile>
               </template>
 

@@ -2,12 +2,12 @@
   <div>
    <v-layout row justify-center>
       <v-flex xs4>
-        <HeatMapPlayer v-bind:gamedata="player" parte='Primeira Parte'/>
+        <HeatMapPlayer v-bind:gamedata="player" parte='First Half'/>
       </v-flex>
       <v-flex xs1>
       </v-flex>
       <v-flex xs4>
-        <HeatMapPlayer v-bind:gamedata="player" parte='Segunda Parte'/>
+        <HeatMapPlayer v-bind:gamedata="player" parte='Second Half'/>
       </v-flex>
     </v-layout>
     <SinglePlayer align="center" v-bind:player="player"/>
