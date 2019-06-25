@@ -78,7 +78,7 @@ export default {
                       },
                       {
                         from:15,
-                        to: 30,
+                        to: 45,
                         color: '#ff2a00',
                         name: 'high',
                       }

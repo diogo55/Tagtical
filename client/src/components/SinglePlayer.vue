@@ -2,8 +2,6 @@
   <v-container fluid grid-list-xl>
       <v-flex xs4>
 <v-card height=auto width=500 style="background:rgb(228, 245, 239)" xs4>
-      <v-card-title class="justify-center">
-      </v-card-title>
       <v-card-text>
         <table style="width:100%; height:40%" border="1" >
           <tr>
