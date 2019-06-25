@@ -463,7 +463,7 @@ def posGenGK(a):
 def infoGen(a):
     global dist
     global vmax
-    vm = round(dist/120,2)
+    vm = round(dist/2400,2)
     f.write(" \"dist\": " + str(dist)+",\n")
     f.write("\"vel_media\": " + str(vm)+",\n")
     f.write("\"vel_max\": " + str(vmax)+"\n")
