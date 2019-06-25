@@ -41,8 +41,8 @@
 		let pos4B;
 		let pos5B;
 		let i = 0;
-		var t;
-		var t1;
+		let t;
+		let t1;
 
 		let jsonfile;
 
@@ -55,14 +55,7 @@
 		let angle3=0;
 		let angle4=0;
 
-
-		var first;
-		var second;
-		var third;
-		var fourth;
-
-		
-
+		let pos_length;		
 
 		let counter = 0;
 		let startTime= 0;
@@ -72,10 +65,15 @@
 
 		function preload() {
 
-			pathname = window.location.pathname;
+			var pathname = window.location.pathname;
 			console.log(pathname);
+			var n = pathname.match('\/[^f].*\/')
+			var e = n[0].replace('\/','');
+			var c = e.replace('\/','');
+			console.log(c);
+			
 
-			loadJSON("http://localhost:5000/api/games/5cebfb862372253811f9f811",gotData);
+			loadJSON("http://localhost:5000/api/games/"+c,gotData);
 			//jsonfile = loadJSON("out.json");
 			bg = loadImage("field2.png");
 
@@ -102,7 +100,8 @@
 			canvas.class("lemon");
 
 			pos1A = jsonfile.teamA.players[0].pos;
-			
+
+			pos_length = pos1A.length;
 
 			pos2A = jsonfile.teamA.players[1].pos;
 			
@@ -172,8 +171,14 @@
 			if(int(t-t1)==1){
 				t1+=1;
 				
-				if (i < 5999) {
+				if (i < pos_length-2) {
 					i++;
+				}
+				else{
+					removeElements()
+					noLoop()
+					let text5 = createSpan("FIM DO JOGO!!!");
+					text5.class("orange");
 				}
 				pos1A.x = ((pos1A[i].posX*640)/44);
 				pos1A.y = (360-(pos1A[i].posY*360)/22);
@@ -294,14 +299,6 @@
 					vertex(vert[2].posX,vert[2].posY);
 					vertex(vert[3].posX,vert[3].posY);
 				endShape(CLOSE);
-				/*
-				beginShape();
-					vertex(pos2A.x,pos2A.y);
-					vertex(pos3A.x,pos3A.y);
-					vertex(pos4A.x,pos4A.y);
-					vertex(pos5A.x,pos5A.y);
-				endShape(CLOSE);
-				*/
 			}	
 
 			if(flag2){
@@ -338,22 +335,9 @@
 					vertex(vert[3].posX,vert[3].posY);
 				endShape(CLOSE);
 
-				/*
-				beginShape();
-					vertex(pos2B.x,pos2B.y);
-					vertex(pos3B.x,pos3B.y);
-					vertex(pos4B.x,pos4B.y);
-					vertex(pos5B.x,pos5B.y);
-				endShape(CLOSE);
-				*/
 			}				
 
 		}
-
-		//function compararNumeros(a, b) {
-  		//	return a - b;
-	//	}
-
 
 		function sortByKey(array, key) {
 			return array.sort(function(a, b) {
@@ -367,14 +351,22 @@
 			if(key == 'p')
 				noLoop();
 			if(key == 'r')
+				removeElements();
 				loop();
 			if(key == 's')
 				redraw();
 			if(key == 'd'){
 				flag = !flag;
+				redraw()
 			}
 			if(key == 'e'){
 				flag2 = !flag2;
+				redraw()
+			}
+			if(key=='r'){
+				t=1;
+				t1=0;
+				i=0;
 			}
 
 			
@@ -627,10 +619,43 @@
 
 </html>
 <style>
+	body{
+		background: #c8ebdf;
+	}
+
 	.lime{
 		padding-top: 10px;
 		text-align: center;
 	}
+
+	.orange{
+		animation:1s blinker linear infinite;
+    	-webkit-animation:1s blinker linear infinite;
+    	-moz-animation:1s blinker linear infinite;
+
+     	color: orangered;
+		text-align: center;
+		padding-top: 10px;
+	}
+
+    @-moz-keyframes blinker {  
+    	0% { opacity: 1.0; }
+     	50% { opacity: 0.0; }
+    	100% { opacity: 1.0; }
+    }
+
+    @-webkit-keyframes blinker {  
+    	0% { opacity: 1.0; }
+     	50% { opacity: 0.0; }
+     	100% { opacity: 1.0; }
+    }
+
+    @keyframes blinker {  
+    	0% { opacity: 1.0; }
+    	50% { opacity: 0.0; }
+    	100% { opacity: 1.0; }
+    }
+	
 
 	canvas{
 		padding:0;

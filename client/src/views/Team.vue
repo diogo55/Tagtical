@@ -14,8 +14,8 @@
       </v-flex>
     </v-layout>
   </v-container>
-    <SingleEvent v-if="this.$route.params.team=='A'" v-bind:gamedata="team" v-on:view-game="viewGame"/>
-    <SingleEvent v-else v-bind:gamedata="team" v-on:view-game="viewGame"/>
+    <SingleEvent v-if="this.$route.params.team=='A'" v-bind:gamedata="team" v-bind:gameid="idG" v-on:view-game="viewGame"/>
+    <SingleEvent v-else v-bind:gamedata="team" v-bind:gameid="idG" v-on:view-game="viewGame"/>
   </div>
 </template>
 
@@ -34,7 +34,8 @@ export default {
   },
   data(){
     return {
-      team: []
+      team: [],
+      idG: "",
     }
   },
   methods: {
@@ -45,6 +46,7 @@ export default {
   
   created(){
     var id = this.$route.params.id;
+    this.idG = id;
     var t;
     if (this.$route.params.team=='A')
       t="teamA"

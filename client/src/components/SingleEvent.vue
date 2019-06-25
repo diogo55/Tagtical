@@ -2,7 +2,7 @@
   <v-container fluid grid-list-xl>
     <v-layout row justify-center>
       <v-flex xs2>
-        <v-btn @click="$emit('view-game', gamedata._id)" v-bind:key="gamedata._id">{{gamedata._id}}</v-btn>
+        <v-btn @click="$emit('view-game', gameid)" v-bind:key="gameid">{{gameid}}</v-btn>
       </v-flex>
     </v-layout>
     <v-layout row justify-center>
@@ -46,7 +46,7 @@
 <script>
 export default {
   name: "SingleEvent",
-  props: ["gamedata"],
+  props: ["gamedata","gameid"],
   methods: {
     distTotal(){
       var distancia=0;
