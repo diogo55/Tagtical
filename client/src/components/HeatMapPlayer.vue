@@ -108,11 +108,11 @@ export default {
     methods: {
       getData: function() {
         if (this.parte=="Primeira Parte") {
-            for(var j = 0; j <= 60;j++)
+            for(var j = 0; j <= 1200;j++)
                 this.teamdata[this.getPos(this.gamedata.pos[j].posY)][this.getPos(this.gamedata.pos[j].posX)]++;        
                 }        
         else {
-            for(var j = 61; j <= 120;j++) 
+            for(var j = 1201; j <= 2400;j++) 
                 this.teamdata[this.getPos(this.gamedata.pos[j].posY)][this.getPos(this.gamedata.pos[j].posX)]++;
         }
 
