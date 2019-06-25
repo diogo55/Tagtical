@@ -10,8 +10,17 @@
 </head>
 
 <body>
-
-	<div id='myContainer' ></div>
+	<div id='myContainer' >
+	</div>
+	<div class="apple">
+		<p> Controllers: </p>
+					
+		<p>p - pause/continue</p>
+		<p>d - home team area</p>
+		<p>e - away team area</p>
+		<p>r - restart game</p>
+	</div>			
+		
 
 	<script>
 
@@ -49,6 +58,7 @@
 
 		let flag = 0;
 		let flag2 = 0;
+		let flag3 = 0;
 
 		let angle=0;
 		let angle2=0;
@@ -348,13 +358,8 @@
 
 
 		function keyPressed(){
-			if(key == 'p')
-				noLoop();
-			if(key == 'r')
-				removeElements();
-				loop();
 			if(key == 's')
-				redraw();
+			redraw();
 			if(key == 'd'){
 				flag = !flag;
 				redraw()
@@ -368,6 +373,16 @@
 				t1=0;
 				i=0;
 			}
+			if(key == 'p'){
+				if(flag3){
+					flag3 = 0;
+					loop();
+				}
+				else{
+					flag3 = 1;
+					noLoop();
+			}
+		}
 
 			
 		}
@@ -668,5 +683,13 @@
 		bottom: 0;
 		left: 0;
 		right: 0;
+	}
+
+	.apple{
+		position: absolute;
+		top: 150px;	
+		text-align: left;
+		padding: 0;
+		margin: auto;
 	}
 </style>
