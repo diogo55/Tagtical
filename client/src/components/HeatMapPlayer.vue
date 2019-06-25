@@ -57,20 +57,28 @@ export default {
           plotOptions: {
             heatmap: {
                 colorScale: {
-                    ranges: [{
+                    ranges: [
+                      {
                         from: 0,
                         to: 5,
                         color: '#00A100',
                         name: 'low',
-                    },
-                        {
+                      },
+                      {
                         from: 5,
-                        to: 15,
+                        to: 10,
                         color: '#f4e000',
                         name: 'medium',
                       },
                       {
+                        from: 10,
+                        to: 15,
+                        color: '#FFA500',
+                        name: 'medium-high'
+                      },
+                      {
                         from:15,
+                        to: 30,
                         color: '#ff2a00',
                         name: 'high',
                       }
