@@ -2,7 +2,7 @@
   <v-container fluid grid-list-xl>
     <v-layout row justify-center>
       <v-flex xs2>
-        <v-btn @click="$emit('view-game', gameid)" v-bind:key="gameid">Visualize o Jogo!</v-btn>
+        <v-btn @click="$emit('view-game', gameid)" v-bind:key="gameid" >Watch Game!</v-btn>
       </v-flex>
     </v-layout>
     <v-layout row justify-center>
