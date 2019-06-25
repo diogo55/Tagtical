@@ -1,7 +1,7 @@
 <template>
   <v-container fluid grid-list-xl>
       <v-flex xs4>
-<v-card height=auto width=500 color="blue-grey" xs4>
+<v-card height=auto width=500 style="background:rgb(228, 245, 239)" xs4>
       <v-card-title class="justify-center">
       </v-card-title>
       <v-card-text>

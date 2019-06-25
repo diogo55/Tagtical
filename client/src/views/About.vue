@@ -2,7 +2,7 @@
   <div class="text">
     <p>
       Technology is being used more and more in the various activities of everyday life.
-      Sports aren't no exception to the rule and everyday there are more cases of technology incorporated in sports,
+      Sports aren't a exception to the rule and everyday there are more cases of technology incorporated in sports,
       such as: the line goal used in various sports and more recently the introduction of VAR on football.
 
       This evolution doens't only happen just on the game but on the training too, where the gathering and analysis 
