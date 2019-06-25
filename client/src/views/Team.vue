@@ -3,19 +3,16 @@
     <v-container fluid grid-list-xl >
     <v-layout row justify-center>
       <v-flex xs4>
-        <HeatMap v-if="this.$route.params.team=='A'" v-bind:gamedata="team" parte='Primeira Parte'/>
-        <HeatMap v-else v-bind:gamedata="team" parte='Primeira Parte'/>
+        <HeatMap v-bind:gamedata="team" parte='First Half'/>
       </v-flex>
       <v-flex xs1>
       </v-flex>
       <v-flex xs4>
-        <HeatMap v-if="this.$route.params.team=='A'" v-bind:gamedata="team" parte='Segunda Parte'/>
-        <HeatMap v-else v-bind:gamedata="team" parte='Segunda Parte'/>
+        <HeatMap v-bind:gamedata="team" parte='Second Half'/>
       </v-flex>
     </v-layout>
   </v-container>
-    <SingleEvent v-if="this.$route.params.team=='A'" v-bind:gamedata="team" v-bind:gameid="idG" v-on:view-game="viewGame"/>
-    <SingleEvent v-else v-bind:gamedata="team" v-bind:gameid="idG" v-on:view-game="viewGame"/>
+    <SingleEvent v-bind:gamedata="team" v-bind:gameid="idG" v-on:view-game="viewGame"/>
   </div>
 </template>
 
